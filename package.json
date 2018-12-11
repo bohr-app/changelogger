@@ -1,10 +1,10 @@
 {
   "name": "@bohr/changelogger",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI tool to facilitate creating, updating and maintaining CHANGELOG files",
   "main": "out/index.js",
   "bin": {
-    "bohr-cglg": "dist/bin.js"
+    "bohr-cglg": "out/bin.js"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,13 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.1.2] - 2018-12-11
+### Added
+- added bin.js for global support.
+
+### Fixed
+- fixed path to bin.js in package.json.
+
 ## [0.1.1] - 2018-12-11
 ### Fixed
 - Added peer dependencies to --dev.
