@@ -11,3 +11,4 @@ In `package.json`, add the following:
   - `keyFilename` - `string` - path to the json file with the private key for authentication, relative to package.json.
   - `bucketName` - `string` - name of the bucket to be used.
   - `bucketFolder` - `string` - path to be preappended to object being uploaded.
+  - `targets` - `Array<string>` - array with the platforms' folders names with the files to be uploaded
