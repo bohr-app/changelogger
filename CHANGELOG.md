@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.1.1] - 2018-12-11
+### Fixed
+- Added peer dependencies to --dev.
+
 ## [0.1.0] - 2018-12-11
 ### Added
 - changes can be set via CLI .

@@ -7,3 +7,16 @@ CLI tool for creating, updating and maintaining CHANGELOG files.
 The structure of the data generated with `@BOHR/changelogger` adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and the resulting project follows the specification of [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 This tool is still under development, `PR`s are welcome!
+
+## Installation
+
+The easiest way to use `@BOHR/changelogger` is to intall it globally:
+
+    npm i g @BOHR/changelogger
+
+or
+
+    yarn global add @BOHR/changelogger
+
+## Usage
+
