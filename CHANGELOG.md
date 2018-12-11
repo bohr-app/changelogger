@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.2.0] - 2018-12-11
+### Added
+- Added `installation` and `usage` sections in README.
+
 ## [0.1.3] - 2018-12-11
 ### Fixed
 - Removed unnecessary call to start in bin.js.
