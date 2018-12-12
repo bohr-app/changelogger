@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.3.1] - 2018-12-12
+### Fixed
+- Fixed misspell in README.
+
 ## [0.3.0] - 2018-12-12
 ### Added
 - added ability to set `updateType` via the CLI.
