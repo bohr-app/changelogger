@@ -3,5 +3,3 @@
 // tspath:skip-file
 
 const start = require('./index');
-
-start();
