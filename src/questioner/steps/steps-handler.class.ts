@@ -1,5 +1,5 @@
-import { cleanedEmpty } from '@bohr/changelogger/errors/cleaned-empty.function';
-import { noLogsProvided } from '@bohr/changelogger/errors/no-logs-provided.function';
+import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
+import { fatalErrors, infoErrors } from '@bohr/changelogger/errors/errors.enum';
 import { changeAdder } from '@bohr/changelogger/questioner/steps/change-adder.function';
 import { nextStep } from '@bohr/changelogger/questioner/steps/next-step.function';
 import { ChangeItems } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
@@ -34,7 +34,7 @@ export class StepsHandler {
 
   private finish(): void {
     if (this.noMeaningfulData())
-      return noLogsProvided();
+      errorHandler(fatalErrors.noLogsProvided);
     this.cleanEmptyMessages();
     new VersionPreparator(this.newChanges as Array<ChangeItems>).make();
   }
@@ -50,7 +50,7 @@ export class StepsHandler {
     if (cleaned.length === this.newChanges.length)
       return;
 
-    cleanedEmpty();
+    errorHandler(infoErrors.cleanedEmpty);
     this.newChanges = cleaned;
   }
 
