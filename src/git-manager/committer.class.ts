@@ -17,7 +17,8 @@ export class Committer extends PathsResolver {
   }
 
   public async commit(): Promise<void> {
-    console.log('\nSome files need to be committed before proceeding\n');
+    if (!this.committMessage)
+      console.log('\nSome files need to be committed before proceeding\n');
     this.setPaths();
     this.setGit();
 
@@ -25,6 +26,8 @@ export class Committer extends PathsResolver {
 
     if (!this.committMessage)
       await this.askMessage();
+
+    console.log('\nRunning commit and push commands. Please wait.\n');
 
     await this.commitFiles();
     await this.push();
@@ -43,9 +46,8 @@ export class Committer extends PathsResolver {
   private async askMessage(): Promise<void> {
     const answer = await commitMessageInput();
     this.committMessage = answer['message'];
-    console.log('this.committMessage', this.committMessage);
   }
-  // Added logic to commit files before bumping version
+
   private async commitFiles(): Promise<void> {
     try {
       await await promisify(cmd.get)(`git commit -m "${this.committMessage}"`);
