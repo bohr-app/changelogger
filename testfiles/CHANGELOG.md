@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.3.3] - 2018-12-12
+### Fixed
+- Removed space after log.
+
 ## [0.3.2] - 2018-12-12
 ### Fixed
 - fixed logs when running git commands.
