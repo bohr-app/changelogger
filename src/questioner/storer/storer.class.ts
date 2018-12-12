@@ -1,7 +1,6 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
 import { ChangelogInitializer } from '@bohr/changelogger/questioner/storer/changelog-initializer.class';
 import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
-import { MdMaker } from '@bohr/changelogger/renderers/mark-down/md-maker.class';
 import * as fs from 'fs-extra';
 
 export class Storer extends PathsResolver {
@@ -20,7 +19,7 @@ export class Storer extends PathsResolver {
     this.loadChangelogger();
     this.addChangeDetails();
     this.doStoreChanges();
-    this.callRenderer();
+    console.log('\nChanges stored in changelog.json');
   }
 
   private loadChangelogger(): void {
@@ -33,10 +32,6 @@ export class Storer extends PathsResolver {
 
   private doStoreChanges(): void {
     fs.writeJSONSync(this.pathToChangelogJson, this.changeLogger, { spaces: 2 });
-  }
-
-  private callRenderer(): void {
-    new MdMaker().make();
   }
 
 }

@@ -17,6 +17,7 @@ export class MdMaker extends PathsResolver {
     this.addSeparator();
     this.handleChanges();
     this.storeRendered();
+    console.log('CHANGELOG.md updated.\n');
   }
 
   private loadJson(): void {

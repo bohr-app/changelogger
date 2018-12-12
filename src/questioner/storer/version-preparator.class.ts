@@ -1,6 +1,5 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
 import { ChangeDetails, ChangeItems } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
-import { Storer } from '@bohr/changelogger/questioner/storer/storer.class';
 import * as fs from 'fs-extra';
 import * as moment from 'moment';
 import * as path from 'path';
@@ -16,11 +15,11 @@ export class VersionPreparator extends PathsResolver {
     super();
   }
 
-  public make(): void {
+  public make(): ChangeDetails {
     this.setPaths();
     this.getPackageInfo();
     this.setChangeDetails();
-    this.passToStorer();
+    return this.changeDetails;
   }
 
   private getPackageInfo(): void {
@@ -34,10 +33,6 @@ export class VersionPreparator extends PathsResolver {
       date: moment().format('YYYY-MM-DD'),
       items: this.changeItems
     };
-  }
-
-  private passToStorer(): void {
-    new Storer(this.changeDetails).storeChanges();
   }
 
 }

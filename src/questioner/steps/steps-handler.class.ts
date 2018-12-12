@@ -2,22 +2,22 @@ import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
 import { fatalErrors, infoErrors } from '@bohr/changelogger/errors/errors.enum';
 import { changeAdder } from '@bohr/changelogger/questioner/steps/change-adder.function';
 import { nextStep } from '@bohr/changelogger/questioner/steps/next-step.function';
-import { ChangeItems } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
-import { VersionPreparator } from '@bohr/changelogger/questioner/storer/version-preparator.class';
 import { Answers } from 'inquirer';
 
 export class StepsHandler {
 
   private newChanges: Array<Answers> = [];
 
-  public start(): void {
-    this.newQuestion();
+  public async start(): Promise<Array<Answers>> {
+    await this.newQuestion();
+    this.finish();
+    return this.newChanges;
   }
 
   private async newQuestion(): Promise<void> {
     const answers = await changeAdder();
     this.pushNewAnswers(answers);
-    this.enquireNextStep();
+    await this.enquireNextStep();
   }
 
   private pushNewAnswers(answers: Answers): void {
@@ -27,16 +27,13 @@ export class StepsHandler {
   private async enquireNextStep(): Promise<void> {
     const answer = await nextStep();
     if (answer['next'] === 'add')
-      this.newQuestion();
-    else
-      this.finish();
+      await this.newQuestion();
   }
 
   private finish(): void {
     if (this.noMeaningfulData())
       errorHandler(fatalErrors.noLogsProvided);
     this.cleanEmptyMessages();
-    new VersionPreparator(this.newChanges as Array<ChangeItems>).make();
   }
 
   private noMeaningfulData(): boolean {
