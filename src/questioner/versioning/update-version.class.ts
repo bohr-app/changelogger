@@ -51,6 +51,7 @@ export class UpdateVersion extends PathsResolver {
   }
 
   private getCurrentVersion(): void {
+    this.setPaths();
     const packageInfo = fs.readJSONSync(this.packageJsonPath);
     this.currentVersion = packageInfo.version;
   }
