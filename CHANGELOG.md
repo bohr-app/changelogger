@@ -7,6 +7,13 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.3.0] - 2018-12-12
+### Added
+- added ability to set `updateType` via the CLI.
+
+### Changed
+- improved the error handling logic. Now throwing an uncaught exception on fatal errors.
+
 ## [0.2.0] - 2018-12-11
 ### Added
 - Added `installation` and `usage` sections in README.
