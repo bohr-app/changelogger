@@ -4,17 +4,23 @@ import * as path from 'path';
 export class PathsResolver {
 
   protected path: string;
+  protected gitPath: string;
   protected pathToChangelogJson: string;
   protected pathToChangelogMD: string;
 
   protected setPaths(): void {
     this.setPath();
+    this.setGitPath();
     this.setJsonPath();
     this.setMdPath();
   }
 
   private setPath(): void {
     this.path = process.env.TESTING ? `${process.cwd()}/testfiles` : process.cwd();
+  }
+
+  private setGitPath(): void {
+    this.gitPath = process.cwd();
   }
 
   private setJsonPath(): void {
