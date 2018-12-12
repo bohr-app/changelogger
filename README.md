@@ -18,6 +18,8 @@ or
 
     yarn global add @BOHR/changelogger
 
+Because `@BOHR/changelogger` handles some `git` operations via the command line, you also need to have installed the `git` CLI. To install it, please refer to [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
 
 ## Usage
 
