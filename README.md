@@ -28,16 +28,16 @@ Run: `bohr-cglg`, the CLI will then ask you whether you want to:
 - `Make a new changelog entry`
 - `Build the CHANGELOG.md file`
 
-The first option will guide you thorugh the process of adding all the updates info.
+The first option will guide you through the process of adding all the updates info.
 The second option will generate the `markdown` file right away in the current working project.
 
 #### Options
 
 | Arg | Type | Description | Default |
 |--------|------|-------------|---------|
-| `-p` | `string` | `optional` - sets `updateType` to `patch` (e.g. `bohr-cglg --p`) | `undefined` |
-| `-f` | `string` | `optional` - sets `updateType` to `minor` (e.g. `bohr-cglg --f`) | `undefined` |
-| `-m` | `string` | `optional` - sets `updateType` to `major` (e.g. `bohr-cglg --m`) | `undefined` |
+| `p` | `string` | `optional` - sets `updateType` to `patch` (e.g. `bohr-cglg --p`) | `undefined` |
+| `f` | `string` | `optional` - sets `updateType` to `minor` (e.g. `bohr-cglg --f`) | `undefined` |
+| `m` | `string` | `optional` - sets `updateType` to `major` (e.g. `bohr-cglg --m`) | `undefined` |
 
 *If the `updateType` argument is omitted, the CLI will ask to pick it.*
 
