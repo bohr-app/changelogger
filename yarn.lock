@@ -17,10 +17,10 @@
     tslib "^1.9.0"
 
 "@coldmind/tspath@https://github.com/ilDon/tspath":
-  version "0.7.3"
-  resolved "https://github.com/ilDon/tspath#1129a58b1fb4fa751007d75b9e18ea2fdb884ecc"
+  version "0.7.4"
+  resolved "https://github.com/ilDon/tspath#9291ba2d23bea32e5e9b4f3fd682634b1c4d3866"
   dependencies:
-    "@types/node" "^8.0.25"
+    "@types/node" "^10.12.12"
     chalk "^2.3.0"
     escodegen "^1.8.1"
     esprima "^4.0.0"
@@ -53,11 +53,6 @@
   version "10.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
   integrity sha512-Pr+6JRiKkfsFvmU/LK68oBRCQeEg36TyAbPhc2xpez24OOZZCuoIhWGTd39VZy6nGafSbxzGouFPTFD/rR1A0A==
-
-"@types/node@^8.0.25":
-  version "8.10.38"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.38.tgz#e05c201a668492e534b48102aca0294898f449f6"
-  integrity sha512-EibsnbJerd0hBFaDjJStFrVbVBAtOy4dgL8zZFw0uOvPqzBAX59Ci8cgjg3+RgJIWhsB5A4c+pi+D4P9tQQh/A==
 
 "@types/rx-core-binding@*":
   version "4.0.4"

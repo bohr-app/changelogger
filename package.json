@@ -24,7 +24,7 @@
   "license": "MIT",
   "scripts": {
     "watch-ts": "tsc-watch --onSuccess 'tspath -f'",
-    "local": "TESTING=true node out/index.js --m",
+    "local": "TESTING=true node out/index.js",
     "start": "node out/index.js"
   },
   "engines": {
