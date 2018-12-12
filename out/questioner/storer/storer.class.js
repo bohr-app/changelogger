@@ -21,7 +21,6 @@ var __extends = this && this.__extends || function () {
 Object.defineProperty(exports, '__esModule', { value: true });
 var paths_resolver_class_1 = require('../../paths/paths-resolver.class');
 var changelog_initializer_class_1 = require('./changelog-initializer.class');
-var md_maker_class_1 = require('../../renderers/mark-down/md-maker.class');
 var fs = require('fs-extra');
 var Storer = function (_super) {
     __extends(Storer, _super);
@@ -36,7 +35,7 @@ var Storer = function (_super) {
         this.loadChangelogger();
         this.addChangeDetails();
         this.doStoreChanges();
-        this.callRenderer();
+        console.log('\nChanges stored in changelog.json');
     };
     Storer.prototype.loadChangelogger = function () {
         this.changeLogger = fs.readJSONSync(this.pathToChangelogJson);
@@ -46,9 +45,6 @@ var Storer = function (_super) {
     };
     Storer.prototype.doStoreChanges = function () {
         fs.writeJSONSync(this.pathToChangelogJson, this.changeLogger, { spaces: 2 });
-    };
-    Storer.prototype.callRenderer = function () {
-        new md_maker_class_1.MdMaker().make();
     };
     return Storer;
 }(paths_resolver_class_1.PathsResolver);

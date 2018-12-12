@@ -20,7 +20,6 @@ var __extends = this && this.__extends || function () {
 }();
 Object.defineProperty(exports, '__esModule', { value: true });
 var paths_resolver_class_1 = require('../../paths/paths-resolver.class');
-var storer_class_1 = require('./storer.class');
 var fs = require('fs-extra');
 var moment = require('moment');
 var path = require('path');
@@ -35,7 +34,7 @@ var VersionPreparator = function (_super) {
         this.setPaths();
         this.getPackageInfo();
         this.setChangeDetails();
-        this.passToStorer();
+        return this.changeDetails;
     };
     VersionPreparator.prototype.getPackageInfo = function () {
         var finalPath = path.join(this.path, 'package.json');
@@ -47,9 +46,6 @@ var VersionPreparator = function (_super) {
             date: moment().format('YYYY-MM-DD'),
             items: this.changeItems
         };
-    };
-    VersionPreparator.prototype.passToStorer = function () {
-        new storer_class_1.Storer(this.changeDetails).storeChanges();
     };
     return VersionPreparator;
 }(paths_resolver_class_1.PathsResolver);
