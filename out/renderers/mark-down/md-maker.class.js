@@ -38,7 +38,7 @@ var MdMaker = function (_super) {
         this.addSeparator();
         this.handleChanges();
         this.storeRendered();
-        console.log('CHANGELOG.md updated.\n');
+        console.log('CHANGELOG.md updated.');
     };
     MdMaker.prototype.loadJson = function () {
         this.jsonData = fs.readJSONSync(this.pathToChangelogJson);
