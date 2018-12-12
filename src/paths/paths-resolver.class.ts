@@ -5,12 +5,14 @@ export class PathsResolver {
 
   protected path: string;
   protected gitPath: string;
+  protected packageJsonPath: string;
   protected pathToChangelogJson: string;
   protected pathToChangelogMD: string;
 
   protected setPaths(): void {
     this.setPath();
     this.setGitPath();
+    this.setPackageJsonPath();
     this.setJsonPath();
     this.setMdPath();
   }
@@ -21,6 +23,10 @@ export class PathsResolver {
 
   private setGitPath(): void {
     this.gitPath = process.cwd();
+  }
+
+  private setPackageJsonPath(): void {
+    this.packageJsonPath = path.join(this.path, 'package.json');
   }
 
   private setJsonPath(): void {

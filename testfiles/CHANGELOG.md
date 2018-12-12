@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.2.0] - 2018-12-12
+### Added
+- Added ability to commit files before bumping version.
+
 ## [0.1.0] - 2018-12-12
 ### Added
 - few.

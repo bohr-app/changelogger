@@ -11,6 +11,7 @@ export class QuestionerStarter {
 
   private newChanges: Array<ChangeItems>;
   private changeDetails: ChangeDetails;
+  private currentVersion: string;
 
   public async init(): Promise<void> {
     await this.handleUncommittedChanges();
@@ -19,6 +20,7 @@ export class QuestionerStarter {
     this.makeChangeDetailsObject();
     this.storeInJson();
     this.renderMd();
+    await this.commitNewVersion();
   }
 
   private async handleUncommittedChanges(): Promise<void> {
@@ -28,7 +30,7 @@ export class QuestionerStarter {
   }
 
   private async bumpVersion(): Promise<void> {
-    await new UpdateVersion().do();
+    this.currentVersion = await new UpdateVersion().do();
   }
 
   private async askChangesDetails(): Promise<void> {
@@ -46,4 +48,9 @@ export class QuestionerStarter {
   private renderMd(): void {
     new MdMaker().make();
   }
+
+  private async commitNewVersion(): Promise<void> {
+    await new Committer(undefined, `Version ${this.currentVersion}`).commit();
+  }
+
 }

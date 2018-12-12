@@ -10,7 +10,7 @@ export class Committer extends PathsResolver {
   private git: Git;
 
   constructor(
-    private files: FilesToCommit,
+    private files?: FilesToCommit,
     private committMessage?: string
   ) {
     super();
@@ -20,7 +20,6 @@ export class Committer extends PathsResolver {
     console.log('\nSome files need to be committed before proceeding\n');
     this.setPaths();
     this.setGit();
-    console.log('this.files', this.files);
 
     await this.addFiles();
 

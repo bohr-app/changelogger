@@ -1,17 +1,19 @@
+import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
 import { updateTypeSelector } from '@bohr/changelogger/questioner/steps/update-type-selector.function';
 import { UpdateTypes } from '@bohr/changelogger/questioner/versioning/update-types.enum';
+import * as fs from 'fs-extra';
 import * as cmd from 'node-cmd';
 import { argv } from 'yargs';
 
-export class UpdateVersion {
+export class UpdateVersion extends PathsResolver {
 
   private noGitTag = '--no-git-tag-version ';
   private baseCommand = 'version ';
   private command = '';
-
   private updateType: UpdateTypes;
+  private currentVersion: string;
 
-  public async do(): Promise<void> {
+  public async do(): Promise<string> {
     this.getUpdateType();
 
     if (!this.updateType)
@@ -21,6 +23,8 @@ export class UpdateVersion {
 
     this.setCommand();
     this.doUpdate();
+    this.getCurrentVersion();
+    return this.currentVersion;
   }
 
   private getUpdateType(): void {
@@ -44,6 +48,11 @@ export class UpdateVersion {
   private async askForUpdateType(): Promise<void> {
     const choice = await updateTypeSelector();
     this.updateType = choice.type;
+  }
+
+  private getCurrentVersion(): void {
+    const packageInfo = fs.readJSONSync(this.packageJsonPath);
+    this.currentVersion = packageInfo.version;
   }
 
 }
