@@ -12,8 +12,11 @@ export class FeatureCloser extends FlowBase {
     if (!this.isCurrentAFeature())
       return;
 
+    console.log(`\nClosing branch ${this.currentBranch}\n`);
+
     await this.checkoutToDevelop();
     await this.mergeFeatureOnDevelop();
+    await this.pushDevelop();
     await this.deleteFeatureBranch();
     await this.getRemoteBranchList();
     await this.remmoveRemote();
@@ -29,6 +32,10 @@ export class FeatureCloser extends FlowBase {
 
   private async mergeFeatureOnDevelop(): Promise<void> {
     await promisify(cmd.get)(`git merge ${this.currentBranch}`);
+  }
+
+  private async pushDevelop(): Promise<void> {
+    await this.git.push();
   }
 
   private async deleteFeatureBranch(): Promise<void> {
