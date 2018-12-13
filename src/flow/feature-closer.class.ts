@@ -11,7 +11,7 @@ export class FeatureCloser extends FlowBase {
     await this.checkoutToDevelop();
     await this.mergeFeatureOnDevelop();
     await this.callCommitter();
-    await this.deleteFeatureBranch();
+    // await this.deleteFeatureBranch();
   }
 
   private isCurrentAFeature(): boolean {
@@ -24,14 +24,14 @@ export class FeatureCloser extends FlowBase {
 
   private async mergeFeatureOnDevelop(): Promise<void> {
     try {
-      await this.git.merge(this.currentBranch);
+      await this.git.merge(this.currentBranch, '--rebase');
     } catch (err) {
       console.error('Err merge', err);
     }
   }
 
   private async callCommitter(): Promise<void> {
-    const message = `Merged branch ${this.currentBranch} into develop.`;
+    const message = `Merged branch ${this.currentBranch} into develop`;
     try {
       await new Committer(undefined, message).commit();
     } catch (err) {
