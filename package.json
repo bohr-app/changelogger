@@ -1,6 +1,6 @@
 {
   "name": "@bohr/changelogger",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "CLI tool to facilitate creating, updating and maintaining CHANGELOG files",
   "main": "out/index.js",
   "bin": {
@@ -25,7 +25,9 @@
   "scripts": {
     "watch-ts": "tsc-watch --onSuccess 'tspath -f'",
     "local": "TESTING=true node out/index.js",
-    "start": "node out/index.js"
+    "start": "node out/index.js",
+    "build": "tsc",
+    "publish": "npm run build && npm publish"
   },
   "engines": {
     "node": ">=8.0.0"
