@@ -20,17 +20,17 @@ export class QuestionerStarter {
 
     if (!argv.sg)
       await this.handleUncommittedChanges();
-
     await this.closeFeature();
-    /*
-  await this.bumpVersion();
-  await this.askChangesDetails();
-  this.makeChangeDetailsObject();
-  this.storeInJson();
-  this.renderMd();
-  if (argv.sg)
-    return;
-  await this.commitNewVersion();*/
+
+    await this.bumpVersion();
+    await this.askChangesDetails();
+    this.makeChangeDetailsObject();
+    this.storeInJson();
+    this.renderMd();
+
+    if (argv.sg)
+      return;
+    await this.commitNewVersion();
     await this.handleGitFlow();
   }
 
