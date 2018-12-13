@@ -1,6 +1,6 @@
 import { FilesToCommit } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { commitMessageInput } from '@bohr/changelogger/questioner/git/commit-message-input.function';
+import { commitMessageInput } from '@bohr/changelogger/questioner/question-makers/git/commit-message-input.function';
 import { Git } from 'git-interface';
 import * as cmd from 'node-cmd';
 import { promisify } from 'util';

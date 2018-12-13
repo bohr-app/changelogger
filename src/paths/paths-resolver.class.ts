@@ -1,4 +1,4 @@
-import { JSON_FILE_NAME, MD_FILE_NAME } from '@bohr/changelogger/questioner/storer/filenames.constant';
+import { JSON_FILE_NAME, MD_FILE_NAME } from '@bohr/changelogger/questioner/question-makers/storer/filenames.constant';
 import * as path from 'path';
 
 export class PathsResolver {

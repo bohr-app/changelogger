@@ -1,6 +1,6 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { updateTypeSelector } from '@bohr/changelogger/questioner/steps/update-type-selector.function';
-import { UpdateTypes } from '@bohr/changelogger/questioner/versioning/update-types.enum';
+import { updateTypeSelector } from '@bohr/changelogger/questioner/question-makers/steps/update-type-selector.function';
+import { UpdateTypes } from '@bohr/changelogger/questioner/question-makers/versioning/update-types.enum';
 import * as fs from 'fs-extra';
 import * as cmd from 'node-cmd';
 import { argv } from 'yargs';

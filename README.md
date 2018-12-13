@@ -18,7 +18,7 @@ or
 
     yarn global add @BOHR/changelogger
 
-Because `@BOHR/changelogger` handles some `git` operations via the command line, you also need to have installed the `git` CLI. To install it, please refer to [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+Because `@BOHR/changelogger` handles some `git` operations via the command line, you also need to have installed the `git` CLI. To install it, please refer to [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Alternatively, you may skip all git-related operations with `--sg`.
 
 
 ## Usage
@@ -37,9 +37,15 @@ The second option will generate the `markdown` file right away in the current wo
 
 | Arg | Type | Description | Default |
 |--------|------|-------------|---------|
-| `p` | `string` | `optional` - sets `updateType` to `patch` (e.g. `bohr-cglg --p`) | `undefined` |
-| `f` | `string` | `optional` - sets `updateType` to `minor` (e.g. `bohr-cglg --f`) | `undefined` |
-| `m` | `string` | `optional` - sets `updateType` to `major` (e.g. `bohr-cglg --m`) | `undefined` |
+| `p` | `[string]` | sets `updateType` to `patch` | `undefined` |
+| `f` | `[string]` | sets `updateType` to `minor` | `undefined` |
+| `m` | `[string]` | sets `updateType` to `major` | `undefined` |
+| `sg` | `[boolean]` | skips all git operations | `false` |
+| `sf` | `[boolean]` | skips all git-flow operations | `false` |
+
+Usage esample:
+
+    bohr-cglg --p
 
 *If the `updateType` argument is omitted, the CLI will ask to pick it.*
 

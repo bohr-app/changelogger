@@ -1,7 +1,7 @@
 import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
 import { fatalErrors, infoErrors } from '@bohr/changelogger/errors/errors.enum';
-import { changeAdder } from '@bohr/changelogger/questioner/steps/change-adder.function';
-import { nextStep } from '@bohr/changelogger/questioner/steps/next-step.function';
+import { changeAdder } from '@bohr/changelogger/questioner/question-makers/steps/change-adder.function';
+import { nextStep } from '@bohr/changelogger/questioner/question-makers/steps/next-step.function';
 import { Answers } from 'inquirer';
 
 export class StepsHandler {

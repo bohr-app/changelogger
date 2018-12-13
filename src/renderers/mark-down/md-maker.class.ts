@@ -1,5 +1,5 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
+import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
 import { ChangeDetailsMaker } from '@bohr/changelogger/renderers/mark-down/change-details-maker.class';
 import { SEPARATOR } from '@bohr/changelogger/renderers/renderers.constant';
 import * as fs from 'fs-extra';

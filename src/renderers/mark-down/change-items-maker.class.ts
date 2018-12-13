@@ -1,4 +1,4 @@
-import { ChangeItems } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
+import { ChangeItems } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
 
 export class ChangeItemsMaker {
   private rendered = '';

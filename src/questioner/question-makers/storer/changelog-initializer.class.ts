@@ -1,5 +1,5 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { DEFAULT_CONTENTS } from '@bohr/changelogger/questioner/storer/deafult-contents.constant';
+import { DEFAULT_CONTENTS } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
 import * as fs from 'fs-extra';
 
 export class ChangelogInitializer extends PathsResolver {
