@@ -29,7 +29,7 @@ export class FeatureCloser extends FlowBase {
     try {
       await promisify(cmd.get)(`git merge ${this.currentBranch}`);
     } catch (err) {
-      console.error('Err merge', err);
+      console.error('Err merge:', err);
     }
   }
 
