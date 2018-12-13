@@ -11,7 +11,6 @@ export class FlowBase extends PathsResolver {
     this.setPaths();
     this.setGit();
     this.getCurrentBranch();
-    console.log('this.currentBranch', this.currentBranch);
   }
 
   protected setGit(): void {

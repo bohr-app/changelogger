@@ -50,7 +50,7 @@ export class Committer extends PathsResolver {
 
   private async commitFiles(): Promise<void> {
     try {
-      await await promisify(cmd.get)(`git commit -m "${this.committMessage}"`);
+      await promisify(cmd.get)(`git commit -m "${this.committMessage}"`);
     } catch (err) {
       console.log('Error 1', err);
     }

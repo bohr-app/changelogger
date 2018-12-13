@@ -1,17 +1,25 @@
 import { FlowBase } from '@bohr/changelogger/flow/flow-base.class';
-import { Committer } from '@bohr/changelogger/git-manager/committer.class';
+import * as cmd from 'node-cmd';
+import { promisify } from 'util';
 
 export class FeatureCloser extends FlowBase {
 
+  private remoteBranches: Array<string>;
+
   public async close(): Promise<void> {
     this.init();
+
     if (!this.isCurrentAFeature())
       return;
 
+    console.log(`Closing branch ${this.currentBranch}\n`);
+
     await this.checkoutToDevelop();
     await this.mergeFeatureOnDevelop();
-    await this.callCommitter();
+    await this.pushDevelop();
     await this.deleteFeatureBranch();
+    await this.getRemoteBranchList();
+    await this.remmoveRemote();
   }
 
   private isCurrentAFeature(): boolean {
@@ -23,25 +31,24 @@ export class FeatureCloser extends FlowBase {
   }
 
   private async mergeFeatureOnDevelop(): Promise<void> {
-    await this.git.merge(this.currentBranch);
+    await promisify(cmd.get)(`git merge ${this.currentBranch}`);
   }
 
-  private async callCommitter(): Promise<void> {
-    const message = `Merged branch ${this.currentBranch} into develop.`;
-    try {
-      await new Committer(undefined, message).commit();
-    } catch (err) {
-      console.error('Err 1');
-    }
+  private async pushDevelop(): Promise<void> {
+    await this.git.push();
   }
 
   private async deleteFeatureBranch(): Promise<void> {
-    try {
-      await this.git.removeLocalBranch(this.currentBranch);
-    } catch (err) {
-      console.error('Err 2');
-    }
+    await this.git.removeLocalBranch(this.currentBranch);
+  }
 
+  private async getRemoteBranchList(): Promise<void> {
+    this.remoteBranches = await this.git.getRemoteBranchList() as Array<string>;
+  }
+
+  private async remmoveRemote(): Promise<void> {
+    if (this.remoteBranches && this.remoteBranches.includes(this.currentBranch))
+      await this.git.removeRemoteBranch(this.currentBranch);
   }
 
 }
