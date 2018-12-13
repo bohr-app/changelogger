@@ -7,6 +7,11 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.4.1] - 2018-12-13
+### Fixed
+- fixed publish script to prevent double submission.
+- fixed build script by also including the tspath command.
+
 ## [0.4.0] - 2018-12-13
 ### Added
 - Added ability to skip all git-related operations.
