@@ -18,7 +18,7 @@ export class Committer extends PathsResolver {
 
   public async commit(): Promise<void> {
     if (!this.committMessage)
-      console.log('\nSome files need to be committed before proceeding.\n');
+      console.log('\nSome files need to be committed before proceeding\n');
     this.setPaths();
     this.setGit();
 
