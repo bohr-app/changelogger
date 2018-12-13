@@ -12,7 +12,7 @@ export class FeatureCloser extends FlowBase {
     if (!this.isCurrentAFeature())
       return;
 
-    console.log(`\nClosing branch ${this.currentBranch}\n`);
+    console.log(`Closing branch ${this.currentBranch}\n`);
 
     await this.checkoutToDevelop();
     await this.mergeFeatureOnDevelop();
