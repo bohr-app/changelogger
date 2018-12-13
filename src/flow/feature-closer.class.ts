@@ -10,8 +10,8 @@ export class FeatureCloser extends FlowBase {
     if (!this.isCurrentAFeature())
       return;
 
-    // await this.checkoutToDevelop();
-    await this.rebase();
+    await this.checkoutToDevelop();
+    await this.mergeFeatureOnDevelop();
     await this.callCommitter();
     // await this.deleteFeatureBranch();
   }
@@ -26,7 +26,7 @@ export class FeatureCloser extends FlowBase {
 
   private async mergeFeatureOnDevelop(): Promise<void> {
     try {
-      await this.git.merge(this.currentBranch, '--rebase');
+      await promisify(cmd.get)(`git merge ${this.currentBranch}`);
     } catch (err) {
       console.error('Err merge', err);
     }
@@ -37,7 +37,7 @@ export class FeatureCloser extends FlowBase {
   }
 
   private async callCommitter(): Promise<void> {
-    const message = `Rebased branch ${this.currentBranch} into develop`;
+    const message = `Merged branch ${this.currentBranch} into develop`;
     try {
       await new Committer(undefined, message).commit();
     } catch (err) {
