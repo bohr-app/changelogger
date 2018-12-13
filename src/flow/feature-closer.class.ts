@@ -10,9 +10,10 @@ export class FeatureCloser extends FlowBase {
     if (!this.isCurrentAFeature())
       return;
 
-    await this.checkoutToDevelop();
-    await this.mergeFeatureOnDevelop();
-    await this.deleteFeatureBranch();
+    // await this.checkoutToDevelop();
+    // await this.mergeFeatureOnDevelop();
+    // await this.deleteFeatureBranch();
+    await this.getRemoteBranchList();
   }
 
   private isCurrentAFeature(): boolean {
@@ -29,6 +30,11 @@ export class FeatureCloser extends FlowBase {
 
   private async deleteFeatureBranch(): Promise<void> {
     await this.git.removeLocalBranch(this.currentBranch);
+  }
+
+  private async getRemoteBranchList(): Promise<void> {
+    const branches = await this.git.getRemoteBranchList();
+    console.log('branches', branches);
   }
 
 }
