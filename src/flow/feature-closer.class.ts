@@ -12,7 +12,8 @@ export class FeatureCloser extends FlowBase {
 
     await this.checkoutToDevelop();
     await this.mergeFeatureOnDevelop();
-    await this.callCommitter();
+    // await this.callCommitter();
+    this.checkStatus();
     // await this.deleteFeatureBranch();
   }
 

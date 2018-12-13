@@ -24,4 +24,9 @@ export class FlowBase extends PathsResolver {
     this.currentBranch = gitState.checkSync(this.gitPath).branch;
   }
 
+  protected checkStatus(): void {
+    const status = gitState.checkSync(this.gitPath);
+    console.log(status);
+  }
+
 }
