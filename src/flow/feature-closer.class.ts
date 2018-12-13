@@ -1,5 +1,7 @@
 import { FlowBase } from '@bohr/changelogger/flow/flow-base.class';
 import { Committer } from '@bohr/changelogger/git-manager/committer.class';
+import * as cmd from 'node-cmd';
+import { promisify } from 'util';
 
 export class FeatureCloser extends FlowBase {
 
@@ -8,8 +10,8 @@ export class FeatureCloser extends FlowBase {
     if (!this.isCurrentAFeature())
       return;
 
-    await this.checkoutToDevelop();
-    await this.mergeFeatureOnDevelop();
+    // await this.checkoutToDevelop();
+    await this.rebase();
     await this.callCommitter();
     // await this.deleteFeatureBranch();
   }
@@ -30,8 +32,12 @@ export class FeatureCloser extends FlowBase {
     }
   }
 
+  private async rebase(): Promise<void> {
+    await promisify(cmd.get)(`git rebase ${this.currentBranch} develop`);
+  }
+
   private async callCommitter(): Promise<void> {
-    const message = `Merged branch ${this.currentBranch} into develop`;
+    const message = `Rebased branch ${this.currentBranch} into develop`;
     try {
       await new Committer(undefined, message).commit();
     } catch (err) {
