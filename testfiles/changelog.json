@@ -3,20 +3,6 @@
   "description": "All notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\nThis file has been automatially generated with [@bohr/changelogger](https://github.com/bohr-app/changelogger)",
   "changes": [
     {
-      "version": "0.4.0",
-      "date": "2018-12-13",
-      "items": [
-        {
-          "type": "added",
-          "value": "Added ability to skip all git-related operations"
-        },
-        {
-          "type": "added",
-          "value": "Added ability to automatically apply the git-flow logic by mergin on develop and closing the feature branch and then creating the release branch"
-        }
-      ]
-    },
-    {
       "version": "0.3.3",
       "date": "2018-12-12",
       "items": [

@@ -7,6 +7,11 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.4.0] - 2018-12-13
+### Added
+- Added ability to skip all git-related operations.
+- Added ability to automatically apply the git-flow logic by mergin on develop and closing the feature branch and then creating the release branch.
+
 ## [0.3.1] - 2018-12-12
 ### Fixed
 - Fixed misspell in README.
