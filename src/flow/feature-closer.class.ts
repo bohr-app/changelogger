@@ -20,7 +20,6 @@ export class FeatureCloser extends FlowBase {
 
   private async checkoutToDevelop(): Promise<void> {
     await this.git.checkout('develop');
-
   }
 
   private async mergeFeatureOnDevelop(): Promise<void> {
@@ -28,12 +27,20 @@ export class FeatureCloser extends FlowBase {
   }
 
   private async callCommitter(): Promise<void> {
-    const message = `Merged branch ${this.currentBranch} into develop`;
-    await new Committer(undefined, message).commit();
+    const message = `Merged branch ${this.currentBranch} into develop.`;
+    try {
+      await new Committer(undefined, message).commit();
+    } catch (err) {
+      console.error('Err 1');
+    }
   }
 
   private async deleteFeatureBranch(): Promise<void> {
-    await this.git.removeLocalBranch(this.currentBranch);
+    try {
+      await this.git.removeLocalBranch(this.currentBranch);
+    } catch (err) {
+      console.error('Err 2');
+    }
 
   }
 
