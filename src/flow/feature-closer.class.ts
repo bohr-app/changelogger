@@ -23,7 +23,11 @@ export class FeatureCloser extends FlowBase {
   }
 
   private async mergeFeatureOnDevelop(): Promise<void> {
-    await this.git.merge(this.currentBranch);
+    try {
+      await this.git.merge(this.currentBranch);
+    } catch (err) {
+      console.error('Err merge', err);
+    }
   }
 
   private async callCommitter(): Promise<void> {
@@ -31,7 +35,7 @@ export class FeatureCloser extends FlowBase {
     try {
       await new Committer(undefined, message).commit();
     } catch (err) {
-      console.error('Err 1');
+      console.error('Err 1', err);
     }
   }
 
@@ -39,7 +43,7 @@ export class FeatureCloser extends FlowBase {
     try {
       await this.git.removeLocalBranch(this.currentBranch);
     } catch (err) {
-      console.error('Err 2');
+      console.error('Err 2', err);
     }
 
   }
