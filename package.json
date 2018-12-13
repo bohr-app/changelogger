@@ -26,7 +26,7 @@
     "watch-ts": "tsc-watch --onSuccess 'tspath -f'",
     "local": "TESTING=true node out/index.js",
     "start": "node out/index.js",
-    "build": "tsc",
+    "build": "tsc && tspath -f",
     "publish": "npm run build && npm publish"
   },
   "engines": {
