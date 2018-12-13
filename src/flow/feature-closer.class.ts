@@ -4,16 +4,19 @@ import { promisify } from 'util';
 
 export class FeatureCloser extends FlowBase {
 
+  private remoteBranches: Array<string>;
+
   public async close(): Promise<void> {
     this.init();
 
     if (!this.isCurrentAFeature())
       return;
 
-    // await this.checkoutToDevelop();
-    // await this.mergeFeatureOnDevelop();
-    // await this.deleteFeatureBranch();
+    await this.checkoutToDevelop();
+    await this.mergeFeatureOnDevelop();
+    await this.deleteFeatureBranch();
     await this.getRemoteBranchList();
+    await this.remmoveRemote();
   }
 
   private isCurrentAFeature(): boolean {
@@ -33,8 +36,12 @@ export class FeatureCloser extends FlowBase {
   }
 
   private async getRemoteBranchList(): Promise<void> {
-    const branches = await this.git.getRemoteBranchList();
-    console.log('branches', branches);
+    this.remoteBranches = await this.git.getRemoteBranchList() as Array<string>;
+  }
+
+  private async remmoveRemote(): Promise<void> {
+    if (this.remoteBranches && this.remoteBranches.includes(this.currentBranch))
+      await this.git.removeRemoteBranch(this.currentBranch);
   }
 
 }
