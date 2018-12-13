@@ -27,7 +27,7 @@
     "local": "TESTING=true node out/index.js",
     "start": "node out/index.js",
     "build": "tsc && tspath -f",
-    "publish": "npm run build && npm publish"
+    "publishToNpm": "npm run build && npm publish"
   },
   "engines": {
     "node": ">=8.0.0"
