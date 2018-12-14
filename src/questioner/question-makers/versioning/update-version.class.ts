@@ -38,7 +38,6 @@ export class UpdateVersion extends PathsResolver {
     this.command += this.noGitTag;
     this.command += this.baseCommand;
     this.command += this.updateType;
-    console.log('command', this.command);
   }
 
   private doUpdate(): void {
