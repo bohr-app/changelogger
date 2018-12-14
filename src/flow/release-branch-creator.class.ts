@@ -1,11 +1,11 @@
 import { FlowBase } from '@bohr/changelogger/flow/flow-base.class';
 import * as fs from 'fs-extra';
-export class PostVersioningActions extends FlowBase {
+export class ReleaseBranchCreator extends FlowBase {
 
   private packageInfo;
   private branchName: string;
 
-  public async handle(): Promise<void> {
+  public async create(): Promise<void> {
     this.init();
     this.getPackageInfo();
     this.setBranchName();
