@@ -1,5 +1,5 @@
 import { FeatureCloser } from '@bohr/changelogger/flow/feature-closer.class';
-import { PostVersioningActions } from '@bohr/changelogger/flow/post-versioning-actions.class';
+import { ReleaseBranchCreator } from '@bohr/changelogger/flow/release-branch-creator.class';
 import { Committer } from '@bohr/changelogger/git-manager/committer.class';
 import { UncommittedChecker } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
 import { StepsHandler } from '@bohr/changelogger/questioner/question-makers/steps/steps-handler.class';
@@ -20,18 +20,18 @@ export class QuestionerStarter {
 
     if (!argv.sg)
       await this.handleUncommittedChanges();
-    await this.closeFeature();
 
     await this.bumpVersion();
+
+    await this.handleGitFlow();
+
     await this.askChangesDetails();
     this.makeChangeDetailsObject();
     this.storeInJson();
     this.renderMd();
 
-    if (argv.sg)
-      return;
-    await this.commitNewVersion();
-    await this.handleGitFlow();
+    if (!argv.sg)
+      await this.commitNewVersion();
   }
 
   private async handleUncommittedChanges(): Promise<void> {
@@ -40,10 +40,12 @@ export class QuestionerStarter {
       await new Committer(files).commit();
   }
 
-  private async closeFeature(): Promise<void> {
+  private async handleGitFlow(): Promise<void> {
     if (argv.sg || argv.sf)
       return;
+
     await new FeatureCloser().close();
+    await new ReleaseBranchCreator().create();
   }
 
   private async bumpVersion(): Promise<void> {
@@ -68,11 +70,6 @@ export class QuestionerStarter {
 
   private async commitNewVersion(): Promise<void> {
     await new Committer(undefined, `Version ${this.currentVersion}`).commit();
-  }
-
-  private async handleGitFlow(): Promise<void> {
-    if (!argv.sf)
-      new PostVersioningActions().handle();
   }
 
 }
