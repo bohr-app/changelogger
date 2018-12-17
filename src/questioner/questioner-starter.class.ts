@@ -2,19 +2,20 @@ import { FeatureCloser } from '@bohr/changelogger/flow/feature-closer.class';
 import { ReleaseBranchCreator } from '@bohr/changelogger/flow/release-branch-creator.class';
 import { Committer } from '@bohr/changelogger/git-manager/committer.class';
 import { UncommittedChecker } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
+import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
 import { StepsHandler } from '@bohr/changelogger/questioner/question-makers/steps/steps-handler.class';
 import { ChangeDetails, ChangeItems } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
 import { Storer } from '@bohr/changelogger/questioner/question-makers/storer/storer.class';
 import { VersionPreparator } from '@bohr/changelogger/questioner/question-makers/storer/version-preparator.class';
 import { UpdateVersion } from '@bohr/changelogger/questioner/question-makers/versioning/update-version.class';
 import { MdMaker } from '@bohr/changelogger/renderers/mark-down/md-maker.class';
+import * as fs from 'fs-extra';
 import { argv } from 'yargs';
 
-export class QuestionerStarter {
+export class QuestionerStarter extends PathsResolver {
 
   private newChanges: Array<ChangeItems>;
   private changeDetails: ChangeDetails;
-  private currentVersion: string;
 
   public async init(): Promise<void> {
 
@@ -49,7 +50,7 @@ export class QuestionerStarter {
   }
 
   private async bumpVersion(): Promise<void> {
-    this.currentVersion = await new UpdateVersion().do();
+    await new UpdateVersion().do();
   }
 
   private async askChangesDetails(): Promise<void> {
@@ -69,7 +70,9 @@ export class QuestionerStarter {
   }
 
   private async commitNewVersion(): Promise<void> {
-    await new Committer(undefined, `Version ${this.currentVersion}`).commit();
+    this.setPaths();
+    const packageInfo = fs.readJSONSync(this.packageJsonPath);
+    await new Committer(undefined, `Version ${packageInfo.version}`).commit();
   }
 
 }
