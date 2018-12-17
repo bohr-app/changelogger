@@ -57,7 +57,7 @@ You will then be asked to enter the description of the new log item. Be sure to 
 
 `@BOHR/changelogger` will then ask you if you want to
 
-- `Add another change`: takes you back to the change type selection to repeath the process for a new log entry;
+- `Add another change`: takes you back to the change type selection to repeat the process for a new log entry;
 - `Save changes and update the CHANGELOG`: updates the `version` in `package.json`, saves all new changes in `changelog.json` under the new version number with the current date (YYYY-MM-DD) and generates the CHANGELOG file in `markdown`.
 
 #### Git and GitFlow support

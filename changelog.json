@@ -16,7 +16,7 @@
         },
         {
           "type": "fixed",
-          "value": "removed unnecessary conole.log outputs"
+          "value": "removed unnecessary console.log outputs"
         }
       ]
     },
