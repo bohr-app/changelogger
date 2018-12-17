@@ -3,6 +3,24 @@
   "description": "All notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\nThis file has been automatially generated with [@bohr/changelogger](https://github.com/bohr-app/changelogger)",
   "changes": [
     {
+      "version": "0.4.2",
+      "date": "2018-12-17",
+      "items": [
+        {
+          "type": "changed",
+          "value": "Release branch is now created before updating the version in package.json"
+        },
+        {
+          "type": "added",
+          "value": "Using @bohr/changelogger on itself when publishing to npm"
+        },
+        {
+          "type": "fixed",
+          "value": "removed unnecessary conole.log outputs"
+        }
+      ]
+    },
+    {
       "version": "0.4.1",
       "date": "2018-12-13",
       "items": [

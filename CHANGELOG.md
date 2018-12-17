@@ -7,6 +7,16 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.4.2] - 2018-12-17
+### Added
+- Using @bohr/changelogger on itself when publishing to npm.
+
+### Changed
+- Release branch is now created before updating the version in package.json.
+
+### Fixed
+- removed unnecessary conole.log outputs.
+
 ## [0.4.1] - 2018-12-13
 ### Fixed
 - fixed publish script to prevent double submission.
