@@ -7,6 +7,11 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.4.3] - 2018-12-17
+### Fixed
+- commit message after changelog.json editing shows right version number.
+- fixed spelling in readme and changelog files.
+
 ## [0.4.2] - 2018-12-17
 ### Added
 - Using @bohr/changelogger on itself when publishing to npm.
@@ -15,7 +20,7 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 - Release branch is now created before updating the version in package.json.
 
 ### Fixed
-- removed unnecessary conole.log outputs.
+- removed unnecessary console.log outputs.
 
 ## [0.4.1] - 2018-12-13
 ### Fixed
