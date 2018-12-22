@@ -10,10 +10,21 @@ export class StepsHandler {
 
   private newChanges: Array<Answers> = [];
 
+  constructor(
+    private tempLogs: number = 0
+  ) { }
+
   public async start(): Promise<Array<Answers>> {
-    await this.newQuestion();
+    await this.startQuestions();
     this.finish();
     return this.newChanges;
+  }
+
+  private async startQuestions(): Promise<void> {
+    if (this.tempLogs === 0)
+      await this.newQuestion();
+    else
+      await this.enquireNextStep();
   }
 
   private async newQuestion(): Promise<void> {
