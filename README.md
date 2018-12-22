@@ -20,6 +20,13 @@ or
 
 `@BOHR/changelogger` handles some `git` operations via the command line. To perform such `git` operations, you also need to have installed the `git` CLI. To install it, please refer to [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Alternatively, you may skip all git-related operations with `--sg`.
 
+## Git and GitFlow support
+
+`@BOHR/changelogger` makes it easy to commit all newly created or modified files, and follow the GitFlow branching model in the process.
+
+Before running nearly any action, `@BOHR/changelogger` checks if there are files to commit in the current `branch`. If so, it asks you for a commit message, and then it `commit`s and `push`es them to the remote repository.
+
+Additionally, `@BOHR/changelogger` provides few quick commands to easily create and close feature branches, and stash changelog entries in a temp store to easily add them in future releases.
 
 ## Usage
 
@@ -27,24 +34,17 @@ Open a terminal window where the `package.json` file of your project is located.
 
 Run: `bohr-cglg`, the CLI will then ask you whether you want to:
 
-- `Make a new changelog entry`
+- `Stash new log entries for a future update`
+- `Start a new feature`
+- `Close current feature`
+- `Create a new release`
 - `Build the CHANGELOG.md file`
 
-### Making a new changelog entry
+### Stashing new log entries for a future update
 
-After selecting the option `Make a new changelog entry`, you will be guided through the process of creating a new version of your progect, and all related operations.
+Allows you to add changes to a temporary property in `changelog.json`.
 
-#### Versioning
-
-`@BOHR/changelogger` will ask you what kind of update you are making, based on the [Semantic Versioning](https://semver.org/spec/v2.0.0.html) specifications:
-
-- _patch_: for making backwards-compatible bug fixes;
-- _minor_: for adding one or more functionalities in a backwards-compatible manner;
-- _major_: for making incompatible API changes.
-
-You can also skip this step by setting the `updateType` variable when running the command `bohr-cglg` (see #Options).
-
-You will then be asked what kind of change you want to add to the logger:
+You will be asked what kind of change you want to add:
 
 - _added_: for new features;
 - _changed_: for changes in existing functionality;
@@ -58,18 +58,50 @@ You will then be asked to enter the description of the new log item. Be sure to 
 `@BOHR/changelogger` will then ask you if you want to
 
 - `Add another change`: takes you back to the change type selection to repeat the process for a new log entry;
-- `Save changes and update the CHANGELOG`: updates the `version` in `package.json`, saves all new changes in `changelog.json` under the new version number with the current date (YYYY-MM-DD) and generates the CHANGELOG file in `markdown`.
+- `Save changes and update the CHANGELOG`: saves the changes in the `temp` property in `changelog.json`.
 
-#### Git and GitFlow support
+### Starting a new feature
 
-`@BOHR/changelogger` makes it easy to commit all newly created or modified files, and follow the GitFlow branching model in the process.
+Useful to follow the GitFlow branching model. 
 
-Before starting the update process, `@BOHR/changelogger` will check if there are files to commit in the current `branch`. If so, it will ask you for a message, it will then `commit` and `push` them to the remote repository.
+Selecting this option will help you to create a new feature branch that follows the naming structure `feature/[name-of-the-feature]`.
 
-Unless you opt-out of GitFlow (see #Options), `@BOHR/changelogger` will also:
+### Closing the current feature
+
+Useful to follow the GitFlow branching model. 
+
+Selecting this option will:
 
 - merge on develop the current `feature` branch (if compliant with the structure `feature/[name-of-the-feature]`);
 - delete the local and the remote `feature` branch;
+
+You will then be asked if you want to `Stash new log entries for a future update`.
+
+### Creating a new release
+
+You will be guided through the process of creating a new release of your project.
+
+#### Versioning
+
+`@BOHR/changelogger` will ask you what kind of update you are making, based on the [Semantic Versioning](https://semver.org/spec/v2.0.0.html) specifications:
+
+- _patch_: for making backwards-compatible bug fixes;
+- _minor_: for adding one or more functionalities in a backwards-compatible manner;
+- _major_: for making incompatible API changes.
+
+You can also skip this step by setting the `updateType` variable when running the command `bohr-cglg` (see #Options).
+
+You will then be guided though the process described for `Stashing new log entries for a future update`. In this case, once done, selecting `Save changes and update the CHANGELOG` will:
+
+- update the `version` in `package.json`;
+- save all new changes in `changelog.json` under the new version number with the current date (YYYY-MM-DD);
+- generate the CHANGELOG file in `markdown`.
+
+#### Git and GitFlow support
+
+Unless you opt-out of GitFlow (see #Options), `@BOHR/changelogger` will also:
+
+- close the current feature branch (see `Closing the current feature`);
 - create a new release branch (`release/[version-number]`);
 - `commit` and `push` all changes.
 
