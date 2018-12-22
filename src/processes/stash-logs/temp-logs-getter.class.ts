@@ -18,7 +18,7 @@ export class TempLogsGetter extends Storer {
 
   private async askIfShouldAddTemp(): Promise<void> {
     const answer = await questionMaker([ADD_TEMP_TO_RELEASE]);
-    console.log('answer.choice', answer.choice);
+
     if (!answer.choice)
       return;
 
