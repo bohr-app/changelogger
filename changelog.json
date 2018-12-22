@@ -148,5 +148,19 @@
         }
       ]
     }
+  ],
+  "temp": [
+    {
+      "type": "added",
+      "value": "Added ability to stash log entries to be added in future releases"
+    },
+    {
+      "type": "changed",
+      "value": "Renamed the initial menu item to create a new release"
+    },
+    {
+      "type": "changed",
+      "value": "Improved the method to set the project folders"
+    }
   ]
 }
