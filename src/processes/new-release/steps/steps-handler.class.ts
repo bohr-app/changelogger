@@ -1,7 +1,9 @@
 import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
 import { fatalErrors, infoErrors } from '@bohr/changelogger/errors/errors.enum';
-import { changeAdder } from '@bohr/changelogger/questioner/question-makers/steps/change-adder.function';
-import { nextStep } from '@bohr/changelogger/questioner/question-makers/steps/next-step.function';
+import { CHANGE_VALUE } from '@bohr/changelogger/processes/questions/change-adding/change-value.constant';
+import { LOG_TYPES } from '@bohr/changelogger/processes/questions/change-adding/log-type.constant';
+import { NEXT_STEP } from '@bohr/changelogger/processes/questions/change-adding/next-step-constant';
+import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
 import { Answers } from 'inquirer';
 
 export class StepsHandler {
@@ -15,7 +17,7 @@ export class StepsHandler {
   }
 
   private async newQuestion(): Promise<void> {
-    const answers = await changeAdder();
+    const answers = await questionMaker([LOG_TYPES, CHANGE_VALUE]);
     this.pushNewAnswers(answers);
     await this.enquireNextStep();
   }
@@ -25,7 +27,7 @@ export class StepsHandler {
   }
 
   private async enquireNextStep(): Promise<void> {
-    const answer = await nextStep();
+    const answer = await questionMaker([NEXT_STEP]);
     if (answer['next'] === 'add')
       await this.newQuestion();
   }

@@ -1,29 +1,26 @@
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { ChangeDetails, ChangeItems } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
+import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { ChangeDetails, ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
 import * as fs from 'fs-extra';
 import * as moment from 'moment';
 import * as path from 'path';
 
-export class VersionPreparator extends PathsResolver {
+export class VersionPreparator {
 
   private packageInfo;
   private changeDetails: ChangeDetails;
 
   constructor(
     private changeItems: Array<ChangeItems>
-  ) {
-    super();
-  }
+  ) { }
 
   public make(): ChangeDetails {
-    this.setPaths();
     this.getPackageInfo();
     this.setChangeDetails();
     return this.changeDetails;
   }
 
   private getPackageInfo(): void {
-    const finalPath = path.join(this.path, 'package.json');
+    const finalPath = path.join(DIRS.path, 'package.json');
     this.packageInfo = fs.readJSONSync(finalPath);
   }
 

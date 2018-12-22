@@ -1,5 +1,6 @@
-import { updateTypeSelector } from '@bohr/changelogger/questioner/question-makers/steps/update-type-selector.function';
-import { UpdateTypes } from '@bohr/changelogger/questioner/question-makers/versioning/update-types.enum';
+import { UpdateTypes } from '@bohr/changelogger/processes/new-release/versioning/update-types.enum';
+import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
+import { UPDATE_TYPES } from '@bohr/changelogger/processes/questions/update-type/update-type.constant';
 import * as cmd from 'node-cmd';
 import { argv } from 'yargs';
 
@@ -40,7 +41,7 @@ export class UpdateVersion {
   }
 
   private async askForUpdateType(): Promise<void> {
-    const choice = await updateTypeSelector();
+    const choice = await questionMaker([UPDATE_TYPES]);
     this.updateType = choice.type;
   }
 

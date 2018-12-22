@@ -1,18 +1,18 @@
 import { FeatureCloser } from '@bohr/changelogger/flow/feature-closer.class';
 import { ReleaseBranchCreator } from '@bohr/changelogger/flow/release-branch-creator.class';
 import { Committer } from '@bohr/changelogger/git-manager/committer.class';
-import { UncommittedChecker } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { StepsHandler } from '@bohr/changelogger/questioner/question-makers/steps/steps-handler.class';
-import { ChangeDetails, ChangeItems } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
-import { Storer } from '@bohr/changelogger/questioner/question-makers/storer/storer.class';
-import { VersionPreparator } from '@bohr/changelogger/questioner/question-makers/storer/version-preparator.class';
-import { UpdateVersion } from '@bohr/changelogger/questioner/question-makers/versioning/update-version.class';
+import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { handleUncommittedChanges } from '@bohr/changelogger/processes/common-ops/handle-uncommitted-changes.function';
+import { StepsHandler } from '@bohr/changelogger/processes/new-release/steps/steps-handler.class';
+import { ChangesStorer } from '@bohr/changelogger/processes/new-release/storer/changes-storer.class';
+import { ChangeDetails, ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
+import { VersionPreparator } from '@bohr/changelogger/processes/new-release/storer/version-preparator.class';
+import { UpdateVersion } from '@bohr/changelogger/processes/new-release/versioning/update-version.class';
 import { MdMaker } from '@bohr/changelogger/renderers/mark-down/md-maker.class';
 import * as fs from 'fs-extra';
 import { argv } from 'yargs';
 
-export class QuestionerStarter extends PathsResolver {
+export class NewReleaseMaker {
 
   private newChanges: Array<ChangeItems>;
   private changeDetails: ChangeDetails;
@@ -20,7 +20,7 @@ export class QuestionerStarter extends PathsResolver {
   public async init(): Promise<void> {
 
     if (!argv.sg)
-      await this.handleUncommittedChanges();
+      await handleUncommittedChanges();
 
     await this.bumpVersion();
 
@@ -33,12 +33,6 @@ export class QuestionerStarter extends PathsResolver {
 
     if (!argv.sg)
       await this.commitNewVersion();
-  }
-
-  private async handleUncommittedChanges(): Promise<void> {
-    const files = await new UncommittedChecker().exist();
-    if (files.uncommitted.length || files.untracked.length)
-      await new Committer(files).commit();
   }
 
   private async handleGitFlow(): Promise<void> {
@@ -62,7 +56,7 @@ export class QuestionerStarter extends PathsResolver {
   }
 
   private storeInJson(): void {
-    new Storer(this.changeDetails).storeChanges();
+    new ChangesStorer(this.changeDetails).storeChanges();
   }
 
   private renderMd(): void {
@@ -70,8 +64,7 @@ export class QuestionerStarter extends PathsResolver {
   }
 
   private async commitNewVersion(): Promise<void> {
-    this.setPaths();
-    const packageInfo = fs.readJSONSync(this.packageJsonPath);
+    const packageInfo = fs.readJSONSync(DIRS.packageJsonPath);
     await new Committer(undefined, `Version ${packageInfo.version}`).commit();
   }
 

@@ -1,4 +1,4 @@
-import { UpdateTypes } from '@bohr/changelogger/questioner/question-makers/versioning/update-types.enum';
+import { UpdateTypes } from '@bohr/changelogger/processes/new-release/versioning/update-types.enum';
 import { Question } from 'inquirer';
 
 export const UPDATE_TYPES: Question = {

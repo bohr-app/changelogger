@@ -1,25 +1,24 @@
 import { FilesToCommit } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { commitMessageInput } from '@bohr/changelogger/questioner/question-makers/git/commit-message-input.function';
+import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { COMMITT_MESSAGE } from '@bohr/changelogger/processes/questions/git/commit-message.constant';
+import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
 import { Git } from 'git-interface';
 import * as cmd from 'node-cmd';
 import { promisify } from 'util';
 
-export class Committer extends PathsResolver {
+export class Committer {
 
   private git: Git;
 
   constructor(
     private files?: FilesToCommit,
     private committMessage?: string
-  ) {
-    super();
-  }
+  ) { }
 
   public async commit(): Promise<void> {
     if (!this.committMessage)
       console.log('\nSome files need to be committed before proceeding\n');
-    this.setPaths();
+
     this.setGit();
 
     await this.addFiles();
@@ -35,7 +34,7 @@ export class Committer extends PathsResolver {
 
   private setGit(): void {
     this.git = new Git({
-      dir: this.gitPath
+      dir: DIRS.gitPath
     });
   }
 
@@ -44,7 +43,7 @@ export class Committer extends PathsResolver {
   }
 
   private async askMessage(): Promise<void> {
-    const answer = await commitMessageInput();
+    const answer = await questionMaker([COMMITT_MESSAGE]);
     this.committMessage = answer['message'];
   }
 

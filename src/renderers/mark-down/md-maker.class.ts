@@ -1,16 +1,15 @@
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
-import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/questioner/question-makers/storer/deafult-contents.constant';
+import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
 import { ChangeDetailsMaker } from '@bohr/changelogger/renderers/mark-down/change-details-maker.class';
 import { SEPARATOR } from '@bohr/changelogger/renderers/renderers.constant';
 import * as fs from 'fs-extra';
 
-export class MdMaker extends PathsResolver {
+export class MdMaker {
 
   private jsonData: ChangeLogger;
   private rendered = '';
 
   public make(): void {
-    this.setPaths();
     this.loadJson();
     this.addTitle();
     this.addDescription();
@@ -21,7 +20,7 @@ export class MdMaker extends PathsResolver {
   }
 
   private loadJson(): void {
-    this.jsonData = fs.readJSONSync(this.pathToChangelogJson);
+    this.jsonData = fs.readJSONSync(DIRS.pathToChangelogJson);
   }
 
   private addTitle(): void {
@@ -45,7 +44,7 @@ export class MdMaker extends PathsResolver {
   }
 
   private storeRendered(): void {
-    fs.writeFileSync(this.pathToChangelogMD, this.rendered);
+    fs.writeFileSync(DIRS.pathToChangelogMD, this.rendered);
   }
 
 }

@@ -1,6 +1,6 @@
 import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
 import { fatalErrors } from '@bohr/changelogger/errors/errors.enum';
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
+import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
 import { Git } from 'git-interface';
 import * as gitState from 'git-state';
 import * as cmd from 'node-cmd';
@@ -11,7 +11,7 @@ export interface FilesToCommit {
   uncommitted: Array<string>;
 }
 
-export class UncommittedChecker extends PathsResolver {
+export class UncommittedChecker {
 
   private isRepository: boolean;
   private git: Git;
@@ -21,7 +21,6 @@ export class UncommittedChecker extends PathsResolver {
   };
 
   public async exist(): Promise<FilesToCommit> {
-    this.setPaths();
     this.isGit();
 
     if (!this.isRepository)
@@ -34,12 +33,12 @@ export class UncommittedChecker extends PathsResolver {
   }
 
   private isGit(): void {
-    this.isRepository = gitState.isGitSync(this.gitPath) as boolean;
+    this.isRepository = gitState.isGitSync(DIRS.gitPath) as boolean;
   }
 
   private setGit(): void {
     this.git = new Git({
-      dir: this.gitPath
+      dir: DIRS.gitPath
     });
   }
 
