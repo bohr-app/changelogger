@@ -22,4 +22,16 @@ export class FlowBase {
     this.currentBranch = gitState.checkSync(DIRS.gitPath).branch;
   }
 
+  protected async checkoutToDevelop(): Promise<void> {
+    await this.git.checkout('develop');
+  }
+
+  protected async pushCurrent(): Promise<void> {
+    await this.git.push();
+  }
+
+  protected async createBranch(name: string): Promise<void> {
+    await this.git.createBranch(name);
+  }
+
 }

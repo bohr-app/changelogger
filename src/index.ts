@@ -1,4 +1,5 @@
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
+import { NewFeatureStarter } from '@bohr/changelogger/processes/new-feature/new-feature.starter.class';
 import { NewReleaseMaker } from '@bohr/changelogger/processes/new-release/new-release-maker.class';
 import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
 import { START_ACTION_PICKER, SUPPORTED_ACTIONS } from '@bohr/changelogger/processes/questions/start-action-picker/start-action-picker';
@@ -12,6 +13,9 @@ export async function start(): Promise<void> {
   switch (choice.action as SUPPORTED_ACTIONS) {
     case SUPPORTED_ACTIONS.stash:
       new LogsStasher().init();
+      break;
+    case SUPPORTED_ACTIONS.newFeature:
+      new NewFeatureStarter().start();
       break;
     case SUPPORTED_ACTIONS.log:
       new NewReleaseMaker().init();

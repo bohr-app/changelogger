@@ -11,8 +11,8 @@ export class ReleaseBranchCreator extends FlowBase {
     this.getPackageInfo();
     this.setBranchName();
     console.log(`\Creating branch ${this.branchName}\n`);
-    await this.createReleaseVersion();
-    await this.pushReleaseBranch();
+    await this.createBranch(this.branchName);
+    await this.pushCurrent();
   }
 
   private getPackageInfo(): void {
@@ -21,14 +21,6 @@ export class ReleaseBranchCreator extends FlowBase {
 
   private setBranchName(): void {
     this.branchName = `release/${this.packageInfo.version}`;
-  }
-
-  private async createReleaseVersion(): Promise<void> {
-    await this.git.createBranch(this.branchName);
-  }
-
-  private async pushReleaseBranch(): Promise<void> {
-    await this.git.push();
   }
 
 }
