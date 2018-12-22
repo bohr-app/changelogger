@@ -14,6 +14,8 @@ export class NewFeatureStarter extends FlowBase {
 
     await this.getFeatureName();
 
+    this.cleanFeatureName();
+
     await this.checkoutToDevelop();
 
     await this.createBranch(`feature/${this.featureName}`);
@@ -24,6 +26,33 @@ export class NewFeatureStarter extends FlowBase {
   private async getFeatureName(): Promise<void> {
     const res = await questionMaker(FEATURE_NAME);
     this.featureName = res.name;
+  }
+
+  private cleanFeatureName(): void {
+    this.featureName = this.removeSpecialChars(this.featureName);
+    this.featureName = this.featureName.replace(/\s{1,}/g, '_');
+    this.featureName = this.featureName.toLowerCase();
+  }
+
+  private removeSpecialChars(source: string): string {
+    let r = source.toLowerCase();
+    const non_asciis = {
+      a: '[àáâãäå]',
+      ae: 'æ',
+      c: 'ç',
+      e: '[èéêë]',
+      i: '[ìíîï]',
+      n: 'ñ',
+      o: '[òóôõö]',
+      oe: 'œ',
+      u: '[ùúûűü]',
+      y: '[ýÿ]'
+    };
+    for (const i in non_asciis)
+      r = r.replace(new RegExp(non_asciis[i], 'g'), i);
+
+    return r.replace(/\s/g, '-')
+      .replace(/[^\w\-]/gi, '');
   }
 
 }
