@@ -44,9 +44,10 @@ export class StepsHandler {
   }
 
   private finish(): void {
-    if (this.noMeaningfulData())
+    if (this.noMeaningfulData() && this.tempLogs === 0)
       errorHandler(fatalErrors.noLogsProvided);
-    this.cleanEmptyMessages();
+    if (this.newChanges.length)
+      this.cleanEmptyMessages();
   }
 
   private noMeaningfulData(): boolean {

@@ -55,7 +55,6 @@ export class NewReleaseMaker {
   }
 
   private async askChangesDetails(): Promise<void> {
-    console.log('this.newChanges', this.newChanges);
     const newlyAdded = await new StepsHandler(this.newChanges.length).start() as Array<ChangeItems>;
     newlyAdded.forEach(change => this.newChanges.push(change));
   }
