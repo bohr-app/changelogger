@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.5.1] - 2018-12-22
+### Changed
+- added description of new features to README.
+
 ## [0.5.0] - 2018-12-22
 ### Added
 - Added ability to stash log entries to be added in future releases.
