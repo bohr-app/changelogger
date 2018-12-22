@@ -1,3 +1,4 @@
+import { Committer } from '@bohr/changelogger/git-manager/committer.class';
 import { handleUncommittedChanges } from '@bohr/changelogger/processes/common-ops/handle-uncommitted-changes.function';
 import { StepsHandler } from '@bohr/changelogger/processes/new-release/steps/steps-handler.class';
 import { ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
@@ -16,6 +17,8 @@ export class LogsStasher {
 
     this.storeTempChanges();
 
+    await this.commitStash();
+
   }
 
   private async getChanges(): Promise<void> {
@@ -24,6 +27,10 @@ export class LogsStasher {
 
   private storeTempChanges(): void {
     new TempStorer(this.newChanges).store();
+  }
+
+  private async commitStash(): Promise<void> {
+    new Committer(undefined, 'Added temp logs to changelog.json').commit();
   }
 
 }
