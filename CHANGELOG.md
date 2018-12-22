@@ -7,6 +7,16 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.5.0] - 2018-12-22
+### Added
+- Added ability to stash log entries to be added in future releases.
+- Added ability to retrieve logs from the temp stash and add them to the current release.
+- Added ability to open and close features (GitFlow) and add temp logs after.
+
+### Changed
+- Renamed the initial menu item to create a new release.
+- Improved the method to set the project folders.
+
 ## [0.4.3] - 2018-12-17
 ### Fixed
 - commit message after changelog.json editing shows right version number.
