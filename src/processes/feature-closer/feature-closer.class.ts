@@ -20,6 +20,8 @@ export class FeatureCloser extends FlowBase {
     await this.deleteFeatureBranch();
     await this.getRemoteBranchList();
     await this.remmoveRemote();
+
+    console.log(`Branch ${this.currentBranch} closed\n`);
   }
 
   private isCurrentAFeature(): boolean {
