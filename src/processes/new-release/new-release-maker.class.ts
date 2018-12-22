@@ -39,7 +39,7 @@ export class NewReleaseMaker {
   }
 
   private async handleGitFlow(): Promise<void> {
-    if (argv.sg || argv.sf)
+    if (argv.sg || argv.sf || process.env.TESTING)
       return;
 
     await new FeatureCloser().close();
