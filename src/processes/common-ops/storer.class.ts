@@ -1,11 +1,9 @@
 import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { Loader } from '@bohr/changelogger/processes/common-ops/loader.class';
 import { ChangelogInitializer } from '@bohr/changelogger/processes/new-release/storer/changelog-initializer.class';
-import { ChangeLogger } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
 import * as fs from 'fs-extra';
 
-export class Storer {
-
-  protected changeLogger: ChangeLogger;
+export class Storer extends Loader {
 
   protected init(): void {
     new ChangelogInitializer().init();
@@ -17,11 +15,7 @@ export class Storer {
     console.log('\nChanges stored in changelog.json');
   }
 
-  private loadChangelogger(): void {
-    this.changeLogger = fs.readJSONSync(DIRS.pathToChangelogJson);
-  }
-
-  private doStoreChanges(): void {
+  protected doStoreChanges(): void {
     fs.writeJSONSync(DIRS.pathToChangelogJson, this.changeLogger, { spaces: 2 });
   }
 

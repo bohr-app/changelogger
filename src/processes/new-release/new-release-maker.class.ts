@@ -8,6 +8,7 @@ import { ChangesStorer } from '@bohr/changelogger/processes/new-release/storer/c
 import { ChangeDetails, ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
 import { VersionPreparator } from '@bohr/changelogger/processes/new-release/storer/version-preparator.class';
 import { UpdateVersion } from '@bohr/changelogger/processes/new-release/versioning/update-version.class';
+import { TempLogsGetter } from '@bohr/changelogger/processes/stash-logs/temp-logs-getter.class';
 import { MdMaker } from '@bohr/changelogger/renderers/mark-down/md-maker.class';
 import * as fs from 'fs-extra';
 import { argv } from 'yargs';
@@ -26,6 +27,8 @@ export class NewReleaseMaker {
 
     await this.handleGitFlow();
 
+    await this.handleTempLogs();
+
     await this.askChangesDetails();
     this.makeChangeDetailsObject();
     this.storeInJson();
@@ -43,12 +46,17 @@ export class NewReleaseMaker {
     await new ReleaseBranchCreator().create();
   }
 
+  private async handleTempLogs(): Promise<void> {
+    this.newChanges = await new TempLogsGetter().get();
+  }
+
   private async bumpVersion(): Promise<void> {
     await new UpdateVersion().do();
   }
 
   private async askChangesDetails(): Promise<void> {
-    this.newChanges = await new StepsHandler().start() as Array<ChangeItems>;
+    const newlyAdded = await new StepsHandler().start() as Array<ChangeItems>;
+    newlyAdded.forEach(change => this.newChanges.push(change));
   }
 
   private makeChangeDetailsObject(): void {
