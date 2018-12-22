@@ -165,6 +165,10 @@
     {
       "type": "added",
       "value": "Added ability to retrieve logs from the temp stash and add them to the current release"
+    },
+    {
+      "type": "added",
+      "value": "Added ability to open and close features (GitFlow) and add temp logs after"
     }
   ]
 }
