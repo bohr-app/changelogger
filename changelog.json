@@ -161,6 +161,10 @@
     {
       "type": "changed",
       "value": "Improved the method to set the project folders"
+    },
+    {
+      "type": "added",
+      "value": "Added ability to retrieve logs from the temp stash and add them to the current release"
     }
   ]
 }
