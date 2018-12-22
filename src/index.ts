@@ -1,3 +1,4 @@
+import { FeatureCloser } from '@bohr/changelogger/flow/feature-closer.class';
 import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
 import { NewFeatureStarter } from '@bohr/changelogger/processes/new-feature/new-feature.starter.class';
 import { NewReleaseMaker } from '@bohr/changelogger/processes/new-release/new-release-maker.class';
@@ -16,6 +17,10 @@ export async function start(): Promise<void> {
       break;
     case SUPPORTED_ACTIONS.newFeature:
       new NewFeatureStarter().start();
+      break;
+    case SUPPORTED_ACTIONS.closeFeature:
+      new FeatureCloser().close();
+      new LogsStasher().init();
       break;
     case SUPPORTED_ACTIONS.log:
       new NewReleaseMaker().init();
