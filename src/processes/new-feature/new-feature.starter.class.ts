@@ -16,6 +16,8 @@ export class NewFeatureStarter extends FlowBase {
 
     this.cleanFeatureName();
 
+    this.init();
+
     await this.checkoutToDevelop();
 
     await this.createBranch(`feature/${this.featureName}`);
