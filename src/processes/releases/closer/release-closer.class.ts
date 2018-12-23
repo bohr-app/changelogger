@@ -34,7 +34,7 @@ export class ReleaseCloser {
   }
 
   private tagFromBranchName(): string {
-    return `Version ${this.branchName.split('/')[1]}`;
+    return `v${this.branchName.split('/')[1]}`;
   }
 
 }
