@@ -36,8 +36,6 @@ export class BranchCloser extends BranchDeletor {
   private logStartClosing(): void {
     if (this.shouldDeleteBranch)
       console.log(`Closing branch ${this.currentBranch}\n`);
-    else
-      console.log('\n');
   }
 
   private async mergeBranchOnDestination(): Promise<void> {

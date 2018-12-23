@@ -217,5 +217,10 @@
       ]
     }
   ],
-  "temp": []
+  "temp": [
+    {
+      "type": "changed",
+      "value": "removed unnecessary console.log"
+    }
+  ]
 }
