@@ -7,6 +7,15 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.6.1] - 2018-12-23
+### Added
+- Added ability to postpone commiting added/changed files.
+
+### Changed
+- Improved console logs when closing a release.
+- Improved feature name cleaning.
+- improved commit message when stashing logs for future updates.
+
 ## [0.6.0] - 2018-12-23
 ### Added
 - Added ability to close releases and add version tag.
