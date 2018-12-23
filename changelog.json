@@ -195,5 +195,10 @@
       ]
     }
   ],
-  "temp": []
+  "temp": [
+    {
+      "type": "changed",
+      "value": "Improved console logs when closing a release"
+    }
+  ]
 }
