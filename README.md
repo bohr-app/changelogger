@@ -38,6 +38,7 @@ Run: `bohr-cglg`, the CLI will then ask you whether you want to:
 - `Start a new feature`
 - `Close current feature`
 - `Create a new release`
+- `Close current release`
 - `Build the CHANGELOG.md file`
 
 ### Stashing new log entries for a future update
@@ -72,8 +73,8 @@ Useful to follow the GitFlow branching model.
 
 Selecting this option will:
 
-- merge on develop the current `feature` branch (if compliant with the structure `feature/[name-of-the-feature]`);
-- delete the local and the remote `feature` branch;
+- merge on `develop` the current `feature` branch (if compliant with the structure `feature/[name-of-the-feature]`);
+- delete the local and the remote `feature` branch.
 
 You will then be asked if you want to `Stash new log entries for a future update`.
 
@@ -91,7 +92,7 @@ You will be guided through the process of creating a new release of your project
 
 You can also skip this step by setting the `updateType` variable when running the command `bohr-cglg` (see #Options).
 
-You will then be guided though the process described for `Stashing new log entries for a future update`. In this case, once done, selecting `Save changes and update the CHANGELOG` will:
+You will then be guided through the process described for `Stashing new log entries for a future update`. In this case, once done, selecting `Save changes and update the CHANGELOG` will:
 
 - update the `version` in `package.json`;
 - save all new changes in `changelog.json` under the new version number with the current date (YYYY-MM-DD);
@@ -120,6 +121,17 @@ Usage esample:
     bohr-cglg --p
 
 *If the `updateType` argument is omitted, the CLI will ask to pick it.*
+
+### Closing the current release
+
+Useful to follow the GitFlow branching model. 
+
+Selecting this option will:
+
+- merge on `develop` the current `release` branch (if compliant with the structure `release/[name-of-the-feature]`);
+- merge on `master` the current `release` branch (if compliant with the structure `release/[name-of-the-feature]`);
+- delete the local and the remote `release` branch;
+- ask if a new `tag` should be created. If so, a new tag `vX.X.X` will be created and pushed to `origin`.
 
 ### Building the CHANGELOG.md file
 
