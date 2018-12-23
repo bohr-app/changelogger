@@ -18,7 +18,7 @@ export class BranchCloser extends BranchDeletor {
     if (!this.isCurrentInScope())
       return;
 
-    console.log(`Closing branch ${this.currentBranch}\n`);
+    this.logStartClosing();
 
     await this.checkoutToBranch(this.destinationBranch);
     await this.mergeBranchOnDestination();
@@ -31,6 +31,13 @@ export class BranchCloser extends BranchDeletor {
 
   private isCurrentInScope(): boolean {
     return this.currentBranch.startsWith(`${this.scope}/`);
+  }
+
+  private logStartClosing(): void {
+    if (this.shouldDeleteBranch)
+      console.log(`Closing branch ${this.currentBranch}\n`);
+    else
+      console.log('\n');
   }
 
   private async mergeBranchOnDestination(): Promise<void> {
