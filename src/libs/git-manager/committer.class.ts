@@ -1,7 +1,7 @@
-import { FilesToCommit } from '@bohr/changelogger/git-manager/uncommitted-checker.class';
-import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
-import { COMMITT_MESSAGE } from '@bohr/changelogger/processes/questions/git/commit-message.constant';
-import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
+import { FilesToCommit } from '@bohr/changelogger/libs/git-manager/uncommitted-checker.class';
+import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
+import { COMMITT_MESSAGE } from '@bohr/changelogger/questions/git/commit-message.constant';
+import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
 import { Git } from 'git-interface';
 import * as cmd from 'node-cmd';
 import { promisify } from 'util';

@@ -1,7 +1,7 @@
-import { FeatureCloser } from '@bohr/changelogger/processes/feature-closer/feature-closer.class';
-import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
-import { ADD_TEMP_AFTER_FEATURE_CLOSED } from '@bohr/changelogger/processes/questions/temp-logs/add-temp-after-feature-closed.constant';
+import { BranchCloser } from '@bohr/changelogger/libs/git-manager/branch-closer.class';
 import { LogsStasher } from '@bohr/changelogger/processes/stash-logs/logs-stasher.class';
+import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
+import { ADD_TEMP_AFTER_FEATURE_CLOSED } from '@bohr/changelogger/questions/temp-logs/add-temp-after-feature-closed.constant';
 
 export class FeatureCloserHandler {
 
@@ -12,7 +12,7 @@ export class FeatureCloserHandler {
   }
 
   private async doClose(): Promise<void> {
-    await new FeatureCloser().close();
+    await new BranchCloser('feature', 'develop', true).close();
   }
 
   private async wantsToAddTempLogs(): Promise<boolean> {

@@ -1,9 +1,9 @@
-import { errorHandler } from '@bohr/changelogger/errors/error-handler.function';
-import { fatalErrors, infoErrors } from '@bohr/changelogger/errors/errors.enum';
-import { CHANGE_VALUE } from '@bohr/changelogger/processes/questions/change-adding/change-value.constant';
-import { LOG_TYPES } from '@bohr/changelogger/processes/questions/change-adding/log-type.constant';
-import { NEXT_STEP } from '@bohr/changelogger/processes/questions/change-adding/next-step-constant';
-import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
+import { errorHandler } from '@bohr/changelogger/libs/errors//error-handler.function';
+import { fatalErrors, infoErrors } from '@bohr/changelogger/libs/errors//errors.enum';
+import { CHANGE_VALUE } from '@bohr/changelogger/questions/change-adding/change-value.constant';
+import { LOG_TYPES } from '@bohr/changelogger/questions/change-adding/log-type.constant';
+import { NEXT_STEP } from '@bohr/changelogger/questions/change-adding/next-step-constant';
+import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
 import { Answers } from 'inquirer';
 
 export class StepsHandler {

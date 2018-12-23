@@ -1,4 +1,4 @@
-import { infoErrors } from '@bohr/changelogger/errors/errors.enum';
+import { infoErrors } from '@bohr/changelogger/libs/errors//errors.enum';
 
 export function errorHandler(message: string): void {
   if (Object.values(infoErrors).includes(message))

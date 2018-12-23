@@ -1,5 +1,5 @@
-import { FlowBase } from '@bohr/changelogger/flow/flow-base.class';
-import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { FlowBase } from '@bohr/changelogger/libs/flow//flow-base.class';
+import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
 import * as fs from 'fs-extra';
 export class ReleaseBranchCreator extends FlowBase {
 

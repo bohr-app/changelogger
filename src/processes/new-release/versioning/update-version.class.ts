@@ -1,6 +1,6 @@
 import { UpdateTypes } from '@bohr/changelogger/processes/new-release/versioning/update-types.enum';
-import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
-import { UPDATE_TYPES } from '@bohr/changelogger/processes/questions/update-type/update-type.constant';
+import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
+import { UPDATE_TYPES } from '@bohr/changelogger/questions/update-type/update-type.constant';
 import * as cmd from 'node-cmd';
 import { argv } from 'yargs';
 

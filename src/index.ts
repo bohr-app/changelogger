@@ -1,10 +1,11 @@
-import { PathsResolver } from '@bohr/changelogger/paths/paths-resolver.class';
+import { PathsResolver } from '@bohr/changelogger/libs/paths/paths-resolver.class';
 import { FeatureCloserHandler } from '@bohr/changelogger/processes/feature-closer/feature-closer-handler.class';
 import { NewFeatureStarter } from '@bohr/changelogger/processes/new-feature/new-feature.starter.class';
 import { NewReleaseMaker } from '@bohr/changelogger/processes/new-release/new-release-maker.class';
-import { questionMaker } from '@bohr/changelogger/processes/questions/question-maker.function';
-import { START_ACTION_PICKER, SUPPORTED_ACTIONS } from '@bohr/changelogger/processes/questions/start-action-picker/start-action-picker';
+import { ReleaseCloser } from '@bohr/changelogger/processes/release-closer/release-closer.class';
 import { LogsStasher } from '@bohr/changelogger/processes/stash-logs/logs-stasher.class';
+import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
+import { START_ACTION_PICKER, SUPPORTED_ACTIONS } from '@bohr/changelogger/questions/start-action-picker/start-action-picker';
 import { rendererStarter } from '@bohr/changelogger/renderers/renderer-starter.function';
 
 export async function start(): Promise<void> {
@@ -21,8 +22,11 @@ export async function start(): Promise<void> {
     case SUPPORTED_ACTIONS.closeFeature:
       new FeatureCloserHandler().close();
       break;
-    case SUPPORTED_ACTIONS.log:
+    case SUPPORTED_ACTIONS.newRelease:
       new NewReleaseMaker().init();
+      break;
+    case SUPPORTED_ACTIONS.closeRelease:
+      new ReleaseCloser().close();
       break;
     case SUPPORTED_ACTIONS.md:
       rendererStarter(choice.action);

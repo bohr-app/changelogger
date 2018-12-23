@@ -1,4 +1,4 @@
-import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
 import { Git } from 'git-interface';
 import * as gitState from 'git-state';
 
@@ -22,8 +22,8 @@ export class FlowBase {
     this.currentBranch = gitState.checkSync(DIRS.gitPath).branch;
   }
 
-  protected async checkoutToDevelop(): Promise<void> {
-    await this.git.checkout('develop');
+  protected async checkoutToBranch(branchName: string): Promise<void> {
+    await this.git.checkout(branchName);
   }
 
   protected async pushCurrent(): Promise<void> {

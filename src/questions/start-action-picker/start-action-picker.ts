@@ -4,7 +4,8 @@ export enum SUPPORTED_ACTIONS {
   stash = 'stash',
   newFeature = 'newfeature',
   closeFeature = 'closefeature',
-  log = 'log',
+  newRelease = 'newRelease',
+  closeRelease = 'closeRelease',
   md = 'md'
 }
 
@@ -16,7 +17,8 @@ export const START_ACTION_PICKER: Question = {
     { name: 'Stash new log entries for a future update', value: SUPPORTED_ACTIONS.stash },
     { name: 'Start a new feature', value: SUPPORTED_ACTIONS.newFeature },
     { name: 'Close current feature', value: SUPPORTED_ACTIONS.closeFeature },
-    { name: 'Create a new release', value: SUPPORTED_ACTIONS.log },
+    { name: 'Create a new release', value: SUPPORTED_ACTIONS.newRelease },
+    { name: 'Close current release', value: SUPPORTED_ACTIONS.closeRelease },
     { name: 'Build the CHANGELOG.md file', value: SUPPORTED_ACTIONS.md }
   ]
 };

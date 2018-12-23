@@ -1,4 +1,4 @@
-import { Committer } from '@bohr/changelogger/git-manager/committer.class';
+import { Committer } from '@bohr/changelogger/libs/git-manager/committer.class';
 import { handleUncommittedChanges } from '@bohr/changelogger/processes/common-ops/handle-uncommitted-changes.function';
 import { StepsHandler } from '@bohr/changelogger/processes/new-release/steps/steps-handler.class';
 import { ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';

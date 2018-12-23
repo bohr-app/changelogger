@@ -1,4 +1,4 @@
-import { DIRS } from '@bohr/changelogger/paths/dirs.constant';
+import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
 import { ChangeLogger } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
 import * as fs from 'fs-extra';
 
