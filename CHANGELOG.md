@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.6.0] - 2018-12-23
+### Added
+- Added ability to close releases and add version tag.
+
 ## [0.5.1] - 2018-12-22
 ### Changed
 - added description of new features to README.
