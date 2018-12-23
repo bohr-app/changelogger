@@ -1,4 +1,4 @@
-import { ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
+import { ChangeItems } from '@bohr/changelogger/processes/releases/creator/storer/deafult-contents.constant';
 
 export class ChangeItemsMaker {
   private rendered = '';

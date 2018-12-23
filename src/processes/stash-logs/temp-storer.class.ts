@@ -1,5 +1,5 @@
 import { Storer } from '@bohr/changelogger/processes/common-ops/storer.class';
-import { ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
+import { ChangeItems } from '@bohr/changelogger/processes/releases/creator/storer/deafult-contents.constant';
 
 export class TempStorer extends Storer {
 

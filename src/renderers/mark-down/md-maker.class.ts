@@ -1,5 +1,5 @@
 import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
-import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
+import { ChangeDetails, ChangeLogger } from '@bohr/changelogger/processes/releases/creator/storer/deafult-contents.constant';
 import { ChangeDetailsMaker } from '@bohr/changelogger/renderers/mark-down/change-details-maker.class';
 import { SEPARATOR } from '@bohr/changelogger/renderers/renderers.constant';
 import * as fs from 'fs-extra';

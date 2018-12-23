@@ -1,8 +1,8 @@
 import { PathsResolver } from '@bohr/changelogger/libs/paths/paths-resolver.class';
-import { FeatureCloserHandler } from '@bohr/changelogger/processes/feature-closer/feature-closer-handler.class';
-import { NewFeatureStarter } from '@bohr/changelogger/processes/new-feature/new-feature.starter.class';
-import { NewReleaseMaker } from '@bohr/changelogger/processes/new-release/new-release-maker.class';
-import { ReleaseCloser } from '@bohr/changelogger/processes/release-closer/release-closer.class';
+import { FeatureCloserHandler } from '@bohr/changelogger/processes/features/feature-closer-handler.class';
+import { NewFeatureStarter } from '@bohr/changelogger/processes/features/new-feature.starter.class';
+import { ReleaseCloser } from '@bohr/changelogger/processes/releases/closer/release-closer.class';
+import { NewReleaseMaker } from '@bohr/changelogger/processes/releases/creator/new-release-maker.class';
 import { LogsStasher } from '@bohr/changelogger/processes/stash-logs/logs-stasher.class';
 import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
 import { START_ACTION_PICKER, SUPPORTED_ACTIONS } from '@bohr/changelogger/questions/start-action-picker/start-action-picker';

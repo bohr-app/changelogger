@@ -1,4 +1,4 @@
-import { UpdateTypes } from '@bohr/changelogger/processes/new-release/versioning/update-types.enum';
+import { UpdateTypes } from '@bohr/changelogger/processes/releases/creator/versioning/update-types.enum';
 import { questionMaker } from '@bohr/changelogger/questions/question-maker.function';
 import { UPDATE_TYPES } from '@bohr/changelogger/questions/update-type/update-type.constant';
 import * as cmd from 'node-cmd';

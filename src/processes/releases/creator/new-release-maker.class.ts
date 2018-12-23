@@ -3,11 +3,11 @@ import { BranchCloser } from '@bohr/changelogger/libs/git-manager/branch-closer.
 import { Committer } from '@bohr/changelogger/libs/git-manager/committer.class';
 import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
 import { handleUncommittedChanges } from '@bohr/changelogger/processes/common-ops/handle-uncommitted-changes.function';
-import { StepsHandler } from '@bohr/changelogger/processes/new-release/steps/steps-handler.class';
-import { ChangesStorer } from '@bohr/changelogger/processes/new-release/storer/changes-storer.class';
-import { ChangeDetails, ChangeItems } from '@bohr/changelogger/processes/new-release/storer/deafult-contents.constant';
-import { VersionPreparator } from '@bohr/changelogger/processes/new-release/storer/version-preparator.class';
-import { UpdateVersion } from '@bohr/changelogger/processes/new-release/versioning/update-version.class';
+import { StepsHandler } from '@bohr/changelogger/processes/releases/creator/steps/steps-handler.class';
+import { ChangesStorer } from '@bohr/changelogger/processes/releases/creator/storer/changes-storer.class';
+import { ChangeDetails, ChangeItems } from '@bohr/changelogger/processes/releases/creator/storer/deafult-contents.constant';
+import { VersionPreparator } from '@bohr/changelogger/processes/releases/creator/storer/version-preparator.class';
+import { UpdateVersion } from '@bohr/changelogger/processes/releases/creator/versioning/update-version.class';
 import { TempLogsGetter } from '@bohr/changelogger/processes/stash-logs/temp-logs-getter.class';
 import { MdMaker } from '@bohr/changelogger/renderers/mark-down/md-maker.class';
 import * as fs from 'fs-extra';

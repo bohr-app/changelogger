@@ -1,6 +1,6 @@
 import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
 import { Loader } from '@bohr/changelogger/processes/common-ops/loader.class';
-import { ChangelogInitializer } from '@bohr/changelogger/processes/new-release/storer/changelog-initializer.class';
+import { ChangelogInitializer } from '@bohr/changelogger/processes/releases/creator/storer/changelog-initializer.class';
 import * as fs from 'fs-extra';
 
 export class Storer extends Loader {

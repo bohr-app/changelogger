@@ -1,5 +1,5 @@
 import { DIRS } from '@bohr/changelogger/libs/paths/dirs.constant';
-import { JSON_FILE_NAME, MD_FILE_NAME } from '@bohr/changelogger/processes/new-release/storer/filenames.constant';
+import { JSON_FILE_NAME, MD_FILE_NAME } from '@bohr/changelogger/processes/releases/creator/storer/filenames.constant';
 import * as path from 'path';
 
 export class PathsResolver {
