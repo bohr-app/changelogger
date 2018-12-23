@@ -207,6 +207,10 @@
     {
       "type": "changed",
       "value": "Improved feature name cleaning"
+    },
+    {
+      "type": "changed",
+      "value": "improved commit message when stashing logs for future updates"
     }
   ]
 }
