@@ -12,7 +12,7 @@ export class BranchCloser extends BranchDeletor {
     super();
   }
 
-  public async close(): Promise<void> {
+  public async close(): Promise<string> {
     this.init();
 
     if (!this.isCurrentInScope())
@@ -24,12 +24,9 @@ export class BranchCloser extends BranchDeletor {
     await this.mergeBranchOnDestination();
     await this.pushCurrent();
 
-    if (!this.shouldDeleteBranch)
-      return this.checkoutToBranch(this.currentBranch);
+    await this.afterMergeAction();
 
-    await this.delete();
-
-    console.log(`Branch ${this.currentBranch} closed\n`);
+    return this.currentBranch;
   }
 
   private isCurrentInScope(): boolean {
@@ -38,6 +35,15 @@ export class BranchCloser extends BranchDeletor {
 
   private async mergeBranchOnDestination(): Promise<void> {
     await promisify(cmd.get)(`git merge ${this.currentBranch}`);
+  }
+
+  private async afterMergeAction(): Promise<void> {
+    if (!this.shouldDeleteBranch)
+      return this.checkoutToBranch(this.currentBranch);
+
+    await this.delete();
+
+    console.log(`Branch ${this.currentBranch} closed\n`);
   }
 
 }
