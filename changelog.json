@@ -199,6 +199,14 @@
     {
       "type": "changed",
       "value": "Improved console logs when closing a release"
+    },
+    {
+      "type": "added",
+      "value": "Added ability to postpone commiting added/changed files"
+    },
+    {
+      "type": "changed",
+      "value": "Improved feature name cleaning"
     }
   ]
 }

@@ -33,6 +33,8 @@ export class NewFeatureStarter extends FlowBase {
   private cleanFeatureName(): void {
     this.featureName = this.removeSpecialChars(this.featureName);
     this.featureName = this.featureName.replace(/\s{1,}/g, '_');
+    this.featureName = this.featureName.replace(/\.{1,}/g, '-');
+    this.featureName = this.featureName.replace(/\/{1,}/g, '-');
     this.featureName = this.featureName.toLowerCase();
   }
 
@@ -53,8 +55,7 @@ export class NewFeatureStarter extends FlowBase {
     for (const i in non_asciis)
       r = r.replace(new RegExp(non_asciis[i], 'g'), i);
 
-    return r.replace(/\s/g, '-')
-      .replace(/[^\w\-]/gi, '');
+    return r;
   }
 
 }
