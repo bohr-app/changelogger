@@ -7,6 +7,13 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.7.0] - 2019-01-11
+### Added
+- added ability to set the action to be performed in terminal.
+
+### Changed
+- removed unnecessary console.log.
+
 ## [0.6.1] - 2018-12-23
 ### Added
 - Added ability to postpone commiting added/changed files.

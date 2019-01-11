@@ -1,6 +1,6 @@
 {
   "name": "@bohr/changelogger",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "CLI tool to facilitate creating, updating and maintaining CHANGELOG files",
   "main": "out/index.js",
   "bin": {
@@ -27,7 +27,7 @@
     "local": "TESTING=true node out/index.js",
     "start": "node out/index.js",
     "build": "tsc && tspath -f",
-    "publishToNpm": "npm run build && npm run start && npm publish"
+    "publishToNpm": "npm run build && npm run start --action=newRelease && npm publish && npm run start --action=closeRelease"
   },
   "engines": {
     "node": ">=8.0.0"

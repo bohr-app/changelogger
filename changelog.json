@@ -3,6 +3,20 @@
   "description": "All notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\nThis file has been automatially generated with [@bohr/changelogger](https://github.com/bohr-app/changelogger)",
   "changes": [
     {
+      "version": "0.7.0",
+      "date": "2019-01-11",
+      "items": [
+        {
+          "type": "changed",
+          "value": "removed unnecessary console.log"
+        },
+        {
+          "type": "added",
+          "value": "added ability to set the action to be performed in terminal"
+        }
+      ]
+    },
+    {
       "version": "0.6.1",
       "date": "2018-12-23",
       "items": [
@@ -217,14 +231,5 @@
       ]
     }
   ],
-  "temp": [
-    {
-      "type": "changed",
-      "value": "removed unnecessary console.log"
-    },
-    {
-      "type": "added",
-      "value": "added ability to set the action to be performed in terminal"
-    }
-  ]
+  "temp": []
 }
