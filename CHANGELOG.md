@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.7.1] - 2019-01-11
+### Changed
+- using --action to set the action being performed in package.json script publishToNpm.
+
 ## [0.7.0] - 2019-01-11
 ### Added
 - added ability to set the action to be performed in terminal.
