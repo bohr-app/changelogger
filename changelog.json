@@ -221,6 +221,10 @@
     {
       "type": "changed",
       "value": "removed unnecessary console.log"
+    },
+    {
+      "type": "added",
+      "value": "added ability to set the action to be performed in terminal"
     }
   ]
 }

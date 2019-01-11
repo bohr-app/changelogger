@@ -34,12 +34,14 @@ Open a terminal window where the `package.json` file of your project is located.
 
 Run: `bohr-cglg`, the CLI will then ask you whether you want to:
 
-- `Stash new log entries for a future update`
-- `Start a new feature`
-- `Close current feature`
-- `Create a new release`
-- `Close current release`
-- `Build the CHANGELOG.md file`
+- `stash`: stashes new log entries for a future update
+- `newFeature`: starts a new feature
+- `closeFeature`: closes current feature
+- `newRelease`: creates a new release
+- `closeRelease`: close current release
+- `md`: build the CHANGELOG.md file
+
+You can skip this step by passing the argument `--action` in terminal (e.g. `--action=stash`, see #Options).
 
 ### Stashing new log entries for a future update
 
@@ -115,10 +117,11 @@ Unless you opt-out of GitFlow (see #Options), `@BOHR/changelogger` will also:
 | `m` | `[string]` | sets `updateType` to `major` | `undefined` |
 | `sg` | `[boolean]` | skips all git operations | `false` |
 | `sf` | `[boolean]` | skips all GitFlow operations | `false` |
+| `action` | `[string]` | sets the action to be performed | `undefined` |
 
 Usage esample:
 
-    bohr-cglg --p
+    bohr-cglg --p --sf --action=newRelease
 
 *If the `updateType` argument is omitted, the CLI will ask to pick it.*
 
