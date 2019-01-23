@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.7.3] - 2019-01-23
+### Fixed
+- committing files before closing a release.
+
 ## [0.7.2] - 2019-01-23
 ### Changed
 - checking if changelog.json exists before starting any process.
