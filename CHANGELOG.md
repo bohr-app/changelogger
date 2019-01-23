@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.7.2] - 2019-01-23
+### Changed
+- checking if changelog.json exists before starting any process.
+
 ## [0.7.1] - 2019-01-11
 ### Changed
 - using --action to set the action being performed in package.json script publishToNpm.
