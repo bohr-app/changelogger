@@ -1,6 +1,6 @@
 {
   "name": "@bohr/changelogger",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "CLI tool to facilitate creating, updating and maintaining CHANGELOG files",
   "main": "out/index.js",
   "bin": {

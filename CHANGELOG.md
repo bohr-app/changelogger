@@ -7,6 +7,10 @@ This file has been automatially generated with [@bohr/changelogger](https://gith
 
 ---
 
+## [0.7.5] - 2019-02-22
+### Fixed
+- Added timout after version bump to ensure data is updated on disk.
+
 ## [0.7.4] - 2019-02-22
 ### Fixed
 - Awaiting command to update package.json version.
