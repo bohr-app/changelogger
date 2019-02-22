@@ -25,6 +25,11 @@ export class NewReleaseMaker {
 
     await this.bumpVersion();
 
+    setTimeout(() => this.postVersionUpdate(), 2000);
+
+  }
+
+  private async postVersionUpdate(): Promise<void> {
     await this.handleGitFlow();
 
     await this.handleTempLogs();
