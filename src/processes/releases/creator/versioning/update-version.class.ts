@@ -20,7 +20,7 @@ export class UpdateVersion {
     console.log(`\nUpdate type: ${this.updateType}\n`);
 
     this.setCommand();
-    this.doUpdate();
+    await this.doUpdate();
   }
 
   private getUpdateType(): void {
@@ -36,8 +36,9 @@ export class UpdateVersion {
     this.command += this.updateType;
   }
 
-  private doUpdate(): void {
-    cmd.run(this.command);
+  private async doUpdate(): Promise<void> {
+    await cmd.run(this.command);
+    console.log('package.json updated.\n');
   }
 
   private async askForUpdateType(): Promise<void> {
